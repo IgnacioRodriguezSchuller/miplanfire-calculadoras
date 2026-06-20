@@ -1,0 +1,14 @@
+{
+  "name": "miplanfire-calculadoras",
+  "version": "1.0.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "description": "Fábrica de calculadoras FIRE — la puerta de entrada SEO a la app Mi Plan FIRE. Todas las calculadoras salen de un solo config.",
+  "scripts": {
+    "build": "node src/build.js",
+    "preview": "npx --yes serve dist -l 4321"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

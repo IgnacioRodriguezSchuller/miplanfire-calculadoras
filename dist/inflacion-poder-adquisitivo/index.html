@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Inflación | Cuánto valdrá tu dinero en el futuro</title>
+<meta name="description" content="Calcula el poder adquisitivo futuro de tu dinero. Descubre cuánto valdrán en euros de hoy una cantidad dentro de X años con la inflación.">
+<meta name="keywords" content="calculadora inflación, poder adquisitivo, valor del dinero en el tiempo, cuánto valdrá mi dinero">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://calculadoras.miplanfire.com/inflacion-poder-adquisitivo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de Inflación | Cuánto valdrá tu dinero en el futuro">
+<meta property="og:description" content="Calcula el poder adquisitivo futuro de tu dinero. Descubre cuánto valdrán en euros de hoy una cantidad dentro de X años con la inflación.">
+<meta property="og:url" content="https://calculadoras.miplanfire.com/inflacion-poder-adquisitivo/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Mi Plan FIRE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1EBDE;--paper2:#FAF6EE;--ink:#221C14;--inksoft:#574E42;--muted:#8D8173;
+--line:#DCD2C2;--terra:#BC5635;--terradeep:#94401F;--olive:#5E6B43;--amber:#BE8629;--rad:14px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;
+font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"DM Mono",ui-monospace,monospace;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+h1,h2,h3{font-weight:500;line-height:1.1;margin:0;}
+a{color:var(--terradeep);text-decoration:none;}
+.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+/* header */
+header.bar{border-bottom:1px solid var(--line);background:rgba(241,235,222,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;}
+.bar-in{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;max-width:1000px;margin:0 auto;}
+.wordmark{font-size:20px;font-weight:500;letter-spacing:-.01em;}
+.wordmark span{color:var(--terra);}
+.wordmark small{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:8px;}
+.bar a.app{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:7px 13px;}
+.bar a.app:hover{background:var(--ink);color:var(--paper);}
+/* breadcrumb */
+.crumb{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);padding:18px 0 0;letter-spacing:.03em;}
+.crumb a{color:var(--muted);} .crumb b{color:var(--inksoft);font-weight:400;}
+/* hero */
+.hero{padding:14px 0 8px;}
+.hero h1{font-size:clamp(28px,5.4vw,46px);letter-spacing:-.015em;margin:10px 0 12px;}
+.hero .intro{font-size:clamp(16px,2.3vw,20px);color:var(--inksoft);max-width:680px;line-height:1.45;}
+/* calculator card */
+.calc{background:var(--paper2);border:1px solid var(--line);border-radius:var(--rad);margin:26px 0;overflow:hidden;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:740px){.calc-grid{grid-template-columns:1fr;}}
+.inputs{padding:24px 24px;border-right:1px solid var(--line);}
+@media(max-width:740px){.inputs{border-right:none;border-bottom:1px solid var(--line);}}
+.inputs h2,.results h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.field{margin-bottom:18px;}
+.field-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.field label{font-size:15.5px;color:var(--ink);font-weight:500;}
+.field .unit{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);white-space:nowrap;}
+.field-controls{display:flex;align-items:center;gap:12px;margin-top:8px;}
+input[type=number]{font-family:"DM Mono",monospace;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:108px;text-align:right;}
+input[type=number]:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 2px #BC563533;}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:99px;background:#E0D6C4;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);box-shadow:0 1px 4px #0002;}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);}
+.help{font-size:12.5px;color:var(--muted);margin:7px 0 0;line-height:1.45;}
+/* results */
+.results{padding:24px 24px;display:flex;flex-direction:column;gap:14px;}
+.result{border-bottom:1px dashed var(--line);padding-bottom:13px;}
+.result:last-child{border-bottom:none;padding-bottom:0;}
+.rlabel{font-size:13.5px;color:var(--inksoft);}
+.rvalue{font-size:26px;font-weight:500;letter-spacing:-.01em;margin-top:2px;}
+.rsub{font-size:12px;color:var(--muted);margin-top:1px;}
+.result.big .rvalue{font-size:clamp(38px,7vw,52px);color:var(--terra);line-height:1;}
+.result.big .rlabel{font-size:14px;}
+/* cta funnel */
+.cta{background:var(--ink);color:#ECE3D4;border-radius:var(--rad);padding:26px 26px;margin:26px 0;}
+.cta .eyebrow{color:#9A8F7C;}
+.cta h2{font-size:clamp(22px,3.4vw,30px);color:#fff;margin:8px 0 10px;letter-spacing:-.01em;}
+.cta p{color:#D8CFBE;font-size:16px;line-height:1.5;max-width:620px;margin:0 0 18px;}
+.cta a.btn{display:inline-block;background:var(--terra);color:#fff;font-weight:500;font-size:16px;padding:13px 22px;border-radius:10px;}
+.cta a.btn:hover{background:#cf6442;}
+.cta .note{font-family:"DM Mono",monospace;font-size:11px;color:#9A8F7C;margin-top:12px;letter-spacing:.03em;}
+/* prose */
+.prose{margin:30px 0;}
+.prose h2{font-size:clamp(21px,3vw,28px);margin:26px 0 8px;letter-spacing:-.01em;}
+.prose p{color:var(--inksoft);font-size:16.5px;line-height:1.6;margin:0 0 10px;max-width:720px;}
+/* faq */
+.faq{margin:30px 0;}
+.faq h2{font-size:clamp(21px,3vw,28px);margin-bottom:14px;}
+details.q{border:1px solid var(--line);border-radius:12px;background:var(--paper2);margin-bottom:10px;overflow:hidden;}
+details.q>summary{list-style:none;cursor:pointer;padding:15px 18px;font-size:17px;font-weight:500;display:flex;justify-content:space-between;gap:12px;}
+details.q>summary::-webkit-details-marker{display:none;}
+details.q .qa{padding:0 18px 16px;color:var(--inksoft);font-size:15.5px;line-height:1.55;max-width:700px;}
+details.q .plus{color:var(--terra);font-family:"DM Mono",monospace;transition:transform .2s;}
+details.q[open] .plus{transform:rotate(45deg);}
+/* related + footer */
+.related{margin:34px 0;}
+.related h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:740px){.relgrid{grid-template-columns:1fr;}}
+.relcard{display:block;border:1px solid var(--line);border-radius:12px;background:var(--paper2);padding:15px 16px;}
+.relcard:hover{border-color:var(--terra);}
+.relcard .rc-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.relcard .rc-t{font-size:16px;font-weight:500;margin-top:4px;color:var(--ink);}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:28px 0 50px;}
+footer .disc{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);line-height:1.6;max-width:760px;}
+footer .fnav{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 16px;}
+footer .fnav a{font-size:13px;color:var(--inksoft);}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Inflación | Cuánto valdrá tu dinero en el futuro","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://calculadoras.miplanfire.com/inflacion-poder-adquisitivo/","description":"Calcula el poder adquisitivo futuro de tu dinero. Descubre cuánto valdrán en euros de hoy una cantidad dentro de X años con la inflación.","inLanguage":"es-ES","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Mi Plan FIRE","url":"https://calculadoras.miplanfire.com"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué inflación pongo?","acceptedAnswer":{"@type":"Answer","text":"Para el largo plazo, entre 2 % y 3 % es una hipótesis razonable en la eurozona. Puedes probar escenarios más altos para ver el riesgo."}},{"@type":"Question","name":"¿La inversión me protege de la inflación?","acceptedAnswer":{"@type":"Answer","text":"Históricamente, una cartera diversificada de renta variable ha batido a la inflación a largo plazo. No cada año, pero sí en horizontes largos."}},{"@type":"Question","name":"¿Puedo ver el efecto sobre mi número FIRE?","acceptedAnswer":{"@type":"Answer","text":"Sí: calcula tu cartera futura con interés compuesto y mete ese valor aquí para verlo en euros de hoy."}}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Calculadoras","item":"https://calculadoras.miplanfire.com/"},{"@type":"ListItem","position":2,"name":"El ladrón silencioso de tu dinero","item":"https://calculadoras.miplanfire.com/inflacion-poder-adquisitivo/"}]}</script>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <a href="https://calculadoras.miplanfire.com/" class="wordmark">Mi Plan <span>FIRE</span><small>Calculadoras</small></a>
+  <a href="https://app.miplanfire.com" class="app">Abrir la app →</a>
+</div></header>
+
+<main class="wrap">
+  <div class="crumb"><a href="https://calculadoras.miplanfire.com/">Calculadoras</a> · <b>Inflación</b></div>
+
+  <section class="hero">
+    <div class="eyebrow">Calculadora · Inflación</div>
+    <h1>El ladrón silencioso de tu dinero</h1>
+    <p class="intro">Mil euros hoy no serán mil euros mañana. La inflación erosiona tu poder adquisitivo año tras año. Mira cuánto valdrá de verdad una cantidad futura, en euros de hoy.</p>
+  </section>
+
+  <section class="calc">
+    <div class="calc-grid">
+      <div class="inputs">
+        <h2>Tus datos</h2>
+        <div class="field">
+    <div class="field-top"><label for="in-importe">Una cantidad futura</label><span class="unit">€</span></div>
+    <div class="field-controls"><input type="range" id="rng-importe" min="0" max="5000000" step="1000" value="100000" aria-label="Una cantidad futura"><input type="number" id="in-importe" min="0" max="5000000" step="1000" value="100000" inputmode="decimal"></div>
+    <p class="help">El dinero que tendrás (en euros nominales) dentro de unos años.</p>
+  </div><div class="field">
+    <div class="field-top"><label for="in-anios">Dentro de cuántos años</label><span class="unit">años</span></div>
+    <div class="field-controls"><input type="range" id="rng-anios" min="1" max="60" step="1" value="20" aria-label="Dentro de cuántos años"><input type="number" id="in-anios" min="1" max="60" step="1" value="20" inputmode="decimal"></div>
+    
+  </div><div class="field">
+    <div class="field-top"><label for="in-inflacion">Inflación media anual</label><span class="unit">%</span></div>
+    <div class="field-controls"><input type="range" id="rng-inflacion" min="0" max="10" step="0.1" value="2.5" aria-label="Inflación media anual"><input type="number" id="in-inflacion" min="0" max="10" step="0.1" value="2.5" inputmode="decimal"></div>
+    <p class="help">El objetivo del BCE ronda el 2 %. La media histórica suele ser algo mayor.</p>
+  </div>
+      </div>
+      <div class="results">
+        <h2>El resultado</h2>
+        <div class="result big">
+    <div class="rlabel">Valdrá, en € de hoy</div>
+    <div class="rvalue" id="out-valorHoy">—</div>
+    <div class="rsub">poder adquisitivo real</div>
+  </div><div class="result">
+    <div class="rlabel">Poder adquisitivo perdido</div>
+    <div class="rvalue" id="out-perdida">—</div>
+    
+  </div><div class="result">
+    <div class="rlabel">Es decir, pierdes</div>
+    <div class="rvalue" id="out-perdidaPct">—</div>
+    
+  </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">Esto es solo una foto fija</div>
+    <h2>¿Y si vieras la película entera?</h2>
+    <p>Mi Plan FIRE coge estos números y los convierte en un plan vivo: 400 simulaciones Monte Carlo, tu pensión pública española, seguimiento mes a mes y comparativa en pareja. Gratis y sin cuenta — tus datos nunca salen de tu dispositivo.</p>
+    <a class="btn" id="cta-link" href="https://app.miplanfire.com/?utm_source=calculadora&utm_medium=funnel&calc=inflacion-poder-adquisitivo">Abrir Mi Plan FIRE →</a>
+    <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
+  </section>
+
+  <section class="prose">
+    <h2>Por qué el dinero parado pierde</h2><p>Si tu dinero no crece al menos al ritmo de la inflación, cada año compra menos. Tener mucho efectivo &quot;a salvo&quot; en el banco es, en realidad, perder poder adquisitivo de forma garantizada. Invertir no es un capricho: es defenderte de la inflación.</p><h2>Esta es la razón de usar rentabilidad real</h2><p>Cuando planificas FIRE en euros de hoy, conviene razonar con rentabilidad real (mercado menos inflación). Así tus cifras ya están &quot;limpias&quot; de inflación y representan poder adquisitivo, no números que parecen enormes pero valen menos.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details class="q"><summary>¿Qué inflación pongo?<span class="plus">+</span></summary><div class="qa">Para el largo plazo, entre 2 % y 3 % es una hipótesis razonable en la eurozona. Puedes probar escenarios más altos para ver el riesgo.</div></details><details class="q"><summary>¿La inversión me protege de la inflación?<span class="plus">+</span></summary><div class="qa">Históricamente, una cartera diversificada de renta variable ha batido a la inflación a largo plazo. No cada año, pero sí en horizontes largos.</div></details><details class="q"><summary>¿Puedo ver el efecto sobre mi número FIRE?<span class="plus">+</span></summary><div class="qa">Sí: calcula tu cartera futura con interés compuesto y mete ese valor aquí para verlo en euros de hoy.</div></details>
+  </section>
+
+  <section class="related">
+    <h2>Calculadoras relacionadas</h2>
+    <div class="relgrid">
+      <a class="relcard" href="https://calculadoras.miplanfire.com/interes-compuesto/"><div class="rc-eye">Fundamentos</div><div class="rc-t">Interés compuesto</div></a><a class="relcard" href="https://calculadoras.miplanfire.com/cuanto-necesito-para-ser-libre/"><div class="rc-eye">Tu número</div><div class="rc-t">Tu meta y tu plazo</div></a><a class="relcard" href="https://calculadoras.miplanfire.com/regla-del-4-por-ciento/"><div class="rc-eye">Tu número</div><div class="rc-t">Regla del 4 %</div></a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p class="disc">Herramienta educativa. No constituye asesoramiento financiero, fiscal ni de inversión. Las proyecciones son estimaciones basadas en supuestos: el comportamiento real puede diferir. Rentabilidades pasadas no garantizan rentabilidades futuras.</p>
+  <div class="fnav"><a href="https://calculadoras.miplanfire.com/regla-del-4-por-ciento/">Calculadora de la Regla del 4 %</a><a href="https://calculadoras.miplanfire.com/cuanto-necesito-para-ser-libre/">Cuánto necesito para ser libre financieramente</a><a href="https://calculadoras.miplanfire.com/interes-compuesto/">Calculadora de Interés Compuesto</a><a href="https://calculadoras.miplanfire.com/coast-fire/">Calculadora Coast FIRE</a><a href="https://calculadoras.miplanfire.com/cuando-puedo-jubilarme/">Calculadora ¿Cuándo puedo jubilarme?</a><a href="https://calculadoras.miplanfire.com/tasa-de-ahorro/">Tasa de ahorro</a><a href="https://calculadoras.miplanfire.com/lean-fat-fire/">Lean / Pleno / Fat</a><a href="https://calculadoras.miplanfire.com/pension-publica-estimada/">Pensión pública (España)</a><a href="https://calculadoras.miplanfire.com/inflacion-poder-adquisitivo/">Inflación</a><a href="https://calculadoras.miplanfire.com/de-golpe-o-poco-a-poco/">¿Invertir de golpe o poco a poco?</a></div>
+</div></footer>
+
+<script>/* ============================================================
+   Mi Plan FIRE · Motor de cálculo compartido
+   ------------------------------------------------------------
+   UMD: funciona como require() en Node (build) y como window.FireEngine
+   en el navegador (se inyecta en cada página generada).
+
+   Cada función recibe un objeto `v` con los valores de los inputs
+   (indexados por el `id` del input en el config) y devuelve un objeto
+   con los resultados (indexados por el `id` del output).
+
+   Para añadir una calculadora nueva: añade aquí su función de cálculo
+   y un objeto en src/calculators.config.js. Nada más.
+   ============================================================ */
+;(function (root, factory) {
+  var E = factory();
+  if (typeof module !== 'undefined' && module.exports) module.exports = E;
+  if (root) root.FireEngine = E;
+})(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function () {
+
+  // ---- helpers ----------------------------------------------------------
+  // Valor futuro con aportación mensual e interés compuesto mensual.
+  function fv(inicial, aporteMensual, anios, rentAnualPct) {
+    var r = (rentAnualPct / 100) / 12;
+    var n = Math.round(anios * 12);
+    if (r === 0) return inicial + aporteMensual * n;
+    var g = Math.pow(1 + r, n);
+    return inicial * g + aporteMensual * ((g - 1) / r);
+  }
+
+  // Resuelve cuántos años hasta alcanzar `objetivo`. null si > maxYears.
+  function solveYears(inicial, aporteMensual, objetivo, rentAnualPct, maxYears) {
+    maxYears = maxYears || 60;
+    if (inicial >= objetivo) return 0;
+    var r = (rentAnualPct / 100) / 12;
+    var bal = inicial;
+    var meses = maxYears * 12;
+    for (var m = 1; m <= meses; m++) {
+      bal = bal * (1 + r) + aporteMensual;
+      if (bal >= objetivo) return m / 12;
+    }
+    return null;
+  }
+
+  function numeroFire(gastoMensual, swrPct) {
+    return (gastoMensual * 12) / (swrPct / 100);
+  }
+
+  // ---- calculadoras -----------------------------------------------------
+  return {
+    // 1 · Regla del 4 %
+    regla4: function (v) {
+      var nf = numeroFire(v.gastoMensual, v.swr);
+      return {
+        numeroFire: nf,
+        gastoAnual: v.gastoMensual * 12,
+        multiplo: 100 / v.swr
+      };
+    },
+
+    // 2 · ¿Cuánto necesito para ser libre?
+    cuantoNecesito: function (v) {
+      var nf = numeroFire(v.gastoMensual, v.swr);
+      var anios = solveYears(v.patrimonio, v.aporteMensual, nf, v.rent);
+      var aportado = anios == null ? null : v.patrimonio + v.aporteMensual * 12 * anios;
+      return { numeroFire: nf, anios: anios, aportado: aportado };
+    },
+
+    // 3 · Interés compuesto
+    interesCompuesto: function (v) {
+      var total = fv(v.inicial, v.aporteMensual, v.anios, v.rent);
+      var aportado = v.inicial + v.aporteMensual * 12 * v.anios;
+      return { total: total, aportado: aportado, intereses: total - aportado };
+    },
+
+    // 4 · Coast FIRE
+    coastFire: function (v) {
+      var nf = numeroFire(v.gastoMensual, v.swr); // en € de hoy (rent es real)
+      var anios = Math.max(0, v.edadJubilacion - v.edadActual);
+      var r = v.rentReal / 100;
+      var coast = nf / Math.pow(1 + r, anios);
+      var ya = v.patrimonio >= coast;
+      var faltan = Math.max(0, coast - v.patrimonio);
+      return {
+        coast: coast,
+        estado: ya
+          ? 'Sí — ya puedes dejar de aportar y aun así llegar'
+          : 'Aún no — sigue aportando un poco más',
+        faltan: ya ? 0 : faltan
+      };
+    },
+
+    // 5 · ¿Cuándo puedo jubilarme?
+    cuandoJubilarme: function (v) {
+      var nf = numeroFire(v.gastoMensual, v.swr);
+      var anios = solveYears(v.patrimonio, v.aporteMensual, nf, v.rent);
+      var edad = anios == null ? null : v.edadActual + anios;
+      return { edadLibre: edad, anios: anios, numeroFire: nf };
+    },
+
+    // 6 · Tasa de ahorro → fecha de libertad
+    tasaAhorro: function (v) {
+      var gastoMensual = v.ingresoMensual * (1 - v.tasaAhorro / 100);
+      var aporteMensual = v.ingresoMensual * (v.tasaAhorro / 100);
+      var nf = numeroFire(gastoMensual, v.swr);
+      var anios = solveYears(v.patrimonio, aporteMensual, nf, v.rent);
+      return { anios: anios, numeroFire: nf, aporteMensual: aporteMensual };
+    },
+
+    // 7 · Lean / Pleno / Fat FIRE
+    leanFatFire: function (v) {
+      var base = numeroFire(v.gastoMensual, v.swr);
+      return { lean: base * 0.7, pleno: base, fat: base * 1.5 };
+    },
+
+    // 8 · Pensión pública estimada (España) — orientativo
+    pensionPublica: function (v) {
+      var pct;
+      if (v.anosCotizados < 15) pct = 0;                       // sin derecho a contributiva
+      else pct = Math.min(1, 0.5 + (v.anosCotizados - 15) * (0.5 / 21.5)); // 15→50%, ~36,5→100%
+      return {
+        pensionMensual: v.baseReguladoraMensual * pct,
+        porcentaje: pct * 100,
+        nota: v.anosCotizados < 15
+          ? 'Con menos de 15 años cotizados no hay pensión contributiva.'
+          : ''
+      };
+    },
+
+    // 9 · Inflación / poder adquisitivo
+    inflacion: function (v) {
+      var valorHoy = v.importe / Math.pow(1 + v.inflacion / 100, v.anios);
+      var perdida = v.importe - valorHoy;
+      return {
+        valorHoy: valorHoy,
+        perdida: perdida,
+        perdidaPct: (perdida / v.importe) * 100
+      };
+    },
+
+    // 10 · ¿De golpe o poco a poco? (lump sum vs DCA)
+    lumpVsDca: function (v) {
+      var r = (v.rentAnual / 100) / 12;
+      var n = Math.round(v.meses);
+      // De golpe: todo invertido hoy, crece n meses
+      var lump = v.importe * Math.pow(1 + r, n);
+      // Poco a poco: importe/n cada mes; cada tramo crece los meses que le quedan
+      var cuota = v.importe / n;
+      var dca = 0;
+      for (var m = 0; m < n; m++) dca += cuota * Math.pow(1 + r, n - m);
+      return { lump: lump, dca: dca, diferencia: lump - dca };
+    }
+  };
+});
+</script>
+<script>(function(){
+  var CFG={"slug":"inflacion-poder-adquisitivo","compute":"inflacion","appUrl":"https://app.miplanfire.com","inputs":[{"id":"importe"},{"id":"anios"},{"id":"inflacion"}],"outputs":[{"id":"valorHoy","format":"compactEur"},{"id":"perdida","format":"eur0"},{"id":"perdidaPct","format":"pct"}]};var E=window.FireEngine;
+  function nf(n,d){return (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('es-ES');}
+  function compactEur(n){if(n==null||isNaN(n))return '—';var neg=n<0,a=Math.abs(n),s;
+    if(a<1000){s=Math.round(a).toLocaleString('es-ES');return (neg?'−':'')+s+' €';}
+    if(a<1e6){var k=a/1000;s=(k>=100?Math.round(k):Math.round(k*10)/10).toLocaleString('es-ES');return (neg?'−':'')+s+' k€';}
+    var m=a/1e6;s=(Math.round(m*100)/100).toLocaleString('es-ES');return (neg?'−':'')+s+' M€';}
+  function eur0(n){if(n==null||isNaN(n))return '—';return Math.round(n).toLocaleString('es-ES')+' €';}
+  function pct(n){if(n==null||isNaN(n))return '—';return nf(n,0)+' %';}
+  function years(n){if(n==null)return 'Más de 60 años';if(n<1)return 'menos de 1 año';return nf(n,1)+' años';}
+  function age(n){if(n==null)return 'Más de 60 trabajando';return 'A los '+Math.ceil(n)+' años';}
+  function multiplo(n){if(n==null||isNaN(n))return '—';return '×'+nf(n,1);}
+  var FMT={compactEur:compactEur,eur0:eur0,pct:pct,years:years,age:age,multiplo:multiplo,text:function(s){return s;}};
+  function read(){var v={};CFG.inputs.forEach(function(i){var el=document.getElementById('in-'+i.id);var x=parseFloat(el.value);v[i.id]=isNaN(x)?0:x;});return v;}
+  function cta(v){var a=document.getElementById('cta-link');if(!a)return;
+    var p=Object.keys(v).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(v[k]);}).join('&');
+    a.href=CFG.appUrl+'/?utm_source=calculadora&utm_medium=funnel&calc='+encodeURIComponent(CFG.slug)+'&'+p;}
+  function run(){var v=read();var out=E[CFG.compute](v);
+    CFG.outputs.forEach(function(o){var el=document.getElementById('out-'+o.id);if(!el)return;var val=out[o.id];el.textContent=FMT[o.format]?FMT[o.format](val):val;});
+    cta(v);}
+  CFG.inputs.forEach(function(i){var num=document.getElementById('in-'+i.id);var rng=document.getElementById('rng-'+i.id);
+    if(num)num.addEventListener('input',function(){if(rng)rng.value=num.value;run();});
+    if(rng)rng.addEventListener('input',function(){if(num)num.value=rng.value;run();});});
+  run();
+})();</script>
+</body>
+</html>

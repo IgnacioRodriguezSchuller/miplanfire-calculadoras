@@ -1,0 +1,349 @@
+/* ============================================================
+   Mi Plan FIRE · Plantilla de renderizado
+   ------------------------------------------------------------
+   Convierte un objeto del config en una página HTML completa:
+   diseño (sistema de la app) + SEO técnico (meta, OG, JSON-LD) +
+   interactividad en vivo (motor inyectado).
+   No se toca para añadir calculadoras; solo si cambia el diseño.
+   ============================================================ */
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+const CSS = `
+:root{--paper:#F1EBDE;--paper2:#FAF6EE;--ink:#221C14;--inksoft:#574E42;--muted:#8D8173;
+--line:#DCD2C2;--terra:#BC5635;--terradeep:#94401F;--olive:#5E6B43;--amber:#BE8629;--rad:14px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;
+font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"DM Mono",ui-monospace,monospace;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+h1,h2,h3{font-weight:500;line-height:1.1;margin:0;}
+a{color:var(--terradeep);text-decoration:none;}
+.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+/* header */
+header.bar{border-bottom:1px solid var(--line);background:rgba(241,235,222,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;}
+.bar-in{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;max-width:1000px;margin:0 auto;}
+.wordmark{font-size:20px;font-weight:500;letter-spacing:-.01em;}
+.wordmark span{color:var(--terra);}
+.wordmark small{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:8px;}
+.bar a.app{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:7px 13px;}
+.bar a.app:hover{background:var(--ink);color:var(--paper);}
+/* breadcrumb */
+.crumb{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);padding:18px 0 0;letter-spacing:.03em;}
+.crumb a{color:var(--muted);} .crumb b{color:var(--inksoft);font-weight:400;}
+/* hero */
+.hero{padding:14px 0 8px;}
+.hero h1{font-size:clamp(28px,5.4vw,46px);letter-spacing:-.015em;margin:10px 0 12px;}
+.hero .intro{font-size:clamp(16px,2.3vw,20px);color:var(--inksoft);max-width:680px;line-height:1.45;}
+/* calculator card */
+.calc{background:var(--paper2);border:1px solid var(--line);border-radius:var(--rad);margin:26px 0;overflow:hidden;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:740px){.calc-grid{grid-template-columns:1fr;}}
+.inputs{padding:24px 24px;border-right:1px solid var(--line);}
+@media(max-width:740px){.inputs{border-right:none;border-bottom:1px solid var(--line);}}
+.inputs h2,.results h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.field{margin-bottom:18px;}
+.field-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.field label{font-size:15.5px;color:var(--ink);font-weight:500;}
+.field .unit{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);white-space:nowrap;}
+.field-controls{display:flex;align-items:center;gap:12px;margin-top:8px;}
+input[type=number]{font-family:"DM Mono",monospace;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:108px;text-align:right;}
+input[type=number]:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 2px #BC563533;}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:99px;background:#E0D6C4;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);box-shadow:0 1px 4px #0002;}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);}
+.help{font-size:12.5px;color:var(--muted);margin:7px 0 0;line-height:1.45;}
+/* results */
+.results{padding:24px 24px;display:flex;flex-direction:column;gap:14px;}
+.result{border-bottom:1px dashed var(--line);padding-bottom:13px;}
+.result:last-child{border-bottom:none;padding-bottom:0;}
+.rlabel{font-size:13.5px;color:var(--inksoft);}
+.rvalue{font-size:26px;font-weight:500;letter-spacing:-.01em;margin-top:2px;}
+.rsub{font-size:12px;color:var(--muted);margin-top:1px;}
+.result.big .rvalue{font-size:clamp(38px,7vw,52px);color:var(--terra);line-height:1;}
+.result.big .rlabel{font-size:14px;}
+/* cta funnel */
+.cta{background:var(--ink);color:#ECE3D4;border-radius:var(--rad);padding:26px 26px;margin:26px 0;}
+.cta .eyebrow{color:#9A8F7C;}
+.cta h2{font-size:clamp(22px,3.4vw,30px);color:#fff;margin:8px 0 10px;letter-spacing:-.01em;}
+.cta p{color:#D8CFBE;font-size:16px;line-height:1.5;max-width:620px;margin:0 0 18px;}
+.cta a.btn{display:inline-block;background:var(--terra);color:#fff;font-weight:500;font-size:16px;padding:13px 22px;border-radius:10px;}
+.cta a.btn:hover{background:#cf6442;}
+.cta .note{font-family:"DM Mono",monospace;font-size:11px;color:#9A8F7C;margin-top:12px;letter-spacing:.03em;}
+/* prose */
+.prose{margin:30px 0;}
+.prose h2{font-size:clamp(21px,3vw,28px);margin:26px 0 8px;letter-spacing:-.01em;}
+.prose p{color:var(--inksoft);font-size:16.5px;line-height:1.6;margin:0 0 10px;max-width:720px;}
+/* faq */
+.faq{margin:30px 0;}
+.faq h2{font-size:clamp(21px,3vw,28px);margin-bottom:14px;}
+details.q{border:1px solid var(--line);border-radius:12px;background:var(--paper2);margin-bottom:10px;overflow:hidden;}
+details.q>summary{list-style:none;cursor:pointer;padding:15px 18px;font-size:17px;font-weight:500;display:flex;justify-content:space-between;gap:12px;}
+details.q>summary::-webkit-details-marker{display:none;}
+details.q .qa{padding:0 18px 16px;color:var(--inksoft);font-size:15.5px;line-height:1.55;max-width:700px;}
+details.q .plus{color:var(--terra);font-family:"DM Mono",monospace;transition:transform .2s;}
+details.q[open] .plus{transform:rotate(45deg);}
+/* related + footer */
+.related{margin:34px 0;}
+.related h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:740px){.relgrid{grid-template-columns:1fr;}}
+.relcard{display:block;border:1px solid var(--line);border-radius:12px;background:var(--paper2);padding:15px 16px;}
+.relcard:hover{border-color:var(--terra);}
+.relcard .rc-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.relcard .rc-t{font-size:16px;font-weight:500;margin-top:4px;color:var(--ink);}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:28px 0 50px;}
+footer .disc{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);line-height:1.6;max-width:760px;}
+footer .fnav{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 16px;}
+footer .fnav a{font-size:13px;color:var(--inksoft);}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+`;
+
+function fonts() {
+  return '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    + '<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">';
+}
+
+function jsonLd(calc, site, canonical) {
+  const webApp = {
+    '@context': 'https://schema.org', '@type': 'WebApplication', name: calc.seo.title,
+    applicationCategory: 'FinanceApplication', operatingSystem: 'Web', url: canonical,
+    description: calc.seo.description, inLanguage: 'es-ES',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    publisher: { '@type': 'Organization', name: site.brand, url: site.baseUrl }
+  };
+  const faq = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: calc.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
+  };
+  const crumbs = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Calculadoras', item: site.baseUrl + '/' },
+      { '@type': 'ListItem', position: 2, name: calc.hero.h1, item: canonical }
+    ]
+  };
+  return '<script type="application/ld+json">' + JSON.stringify(webApp) + '</' + 'script>'
+    + '<script type="application/ld+json">' + JSON.stringify(faq) + '</' + 'script>'
+    + '<script type="application/ld+json">' + JSON.stringify(crumbs) + '</' + 'script>';
+}
+
+function renderField(i) {
+  const hasRange = (i.min !== undefined && i.max !== undefined);
+  const range = hasRange
+    ? `<input type="range" id="rng-${i.id}" min="${i.min}" max="${i.max}" step="${i.step || 1}" value="${i.default}" aria-label="${esc(i.label)}">`
+    : '';
+  const min = i.min !== undefined ? ` min="${i.min}"` : '';
+  const max = i.max !== undefined ? ` max="${i.max}"` : '';
+  const step = i.step !== undefined ? ` step="${i.step}"` : '';
+  return `<div class="field">
+    <div class="field-top"><label for="in-${i.id}">${esc(i.label)}</label><span class="unit">${esc(i.unit || '')}</span></div>
+    <div class="field-controls">${range}<input type="number" id="in-${i.id}"${min}${max}${step} value="${i.default}" inputmode="decimal"></div>
+    ${i.help ? `<p class="help">${esc(i.help)}</p>` : ''}
+  </div>`;
+}
+
+function renderResult(o) {
+  return `<div class="result${o.emphasis ? ' big' : ''}">
+    <div class="rlabel">${esc(o.label)}</div>
+    <div class="rvalue" id="out-${o.id}">—</div>
+    ${o.sub ? `<div class="rsub">${esc(o.sub)}</div>` : ''}
+  </div>`;
+}
+
+function clientRuntime(calc, site) {
+  const cfg = {
+    slug: calc.slug, compute: calc.compute, appUrl: site.appUrl,
+    inputs: calc.inputs.map(i => ({ id: i.id })),
+    outputs: calc.outputs.map(o => ({ id: o.id, format: o.format }))
+  };
+  return `(function(){
+  var CFG=${JSON.stringify(cfg)};var E=window.FireEngine;
+  function nf(n,d){return (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('es-ES');}
+  function compactEur(n){if(n==null||isNaN(n))return '—';var neg=n<0,a=Math.abs(n),s;
+    if(a<1000){s=Math.round(a).toLocaleString('es-ES');return (neg?'−':'')+s+' €';}
+    if(a<1e6){var k=a/1000;s=(k>=100?Math.round(k):Math.round(k*10)/10).toLocaleString('es-ES');return (neg?'−':'')+s+' k€';}
+    var m=a/1e6;s=(Math.round(m*100)/100).toLocaleString('es-ES');return (neg?'−':'')+s+' M€';}
+  function eur0(n){if(n==null||isNaN(n))return '—';return Math.round(n).toLocaleString('es-ES')+' €';}
+  function pct(n){if(n==null||isNaN(n))return '—';return nf(n,0)+' %';}
+  function years(n){if(n==null)return 'Más de 60 años';if(n<1)return 'menos de 1 año';return nf(n,1)+' años';}
+  function age(n){if(n==null)return 'Más de 60 trabajando';return 'A los '+Math.ceil(n)+' años';}
+  function multiplo(n){if(n==null||isNaN(n))return '—';return '×'+nf(n,1);}
+  var FMT={compactEur:compactEur,eur0:eur0,pct:pct,years:years,age:age,multiplo:multiplo,text:function(s){return s;}};
+  function read(){var v={};CFG.inputs.forEach(function(i){var el=document.getElementById('in-'+i.id);var x=parseFloat(el.value);v[i.id]=isNaN(x)?0:x;});return v;}
+  function cta(v){var a=document.getElementById('cta-link');if(!a)return;
+    var p=Object.keys(v).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(v[k]);}).join('&');
+    a.href=CFG.appUrl+'/?utm_source=calculadora&utm_medium=funnel&calc='+encodeURIComponent(CFG.slug)+'&'+p;}
+  function run(){var v=read();var out=E[CFG.compute](v);
+    CFG.outputs.forEach(function(o){var el=document.getElementById('out-'+o.id);if(!el)return;var val=out[o.id];el.textContent=FMT[o.format]?FMT[o.format](val):val;});
+    cta(v);}
+  CFG.inputs.forEach(function(i){var num=document.getElementById('in-'+i.id);var rng=document.getElementById('rng-'+i.id);
+    if(num)num.addEventListener('input',function(){if(rng)rng.value=num.value;run();});
+    if(rng)rng.addEventListener('input',function(){if(num)num.value=rng.value;run();});});
+  run();
+})();`;
+}
+
+function footerNav(calculators, site) {
+  return calculators.map(c => `<a href="${site.baseUrl}/${c.slug}/">${esc(c.hero.h1.length > 38 ? c.seo.title.split('|')[0].trim() : c.hero.eyebrow.replace('Calculadora · ', ''))}</a>`).join('');
+}
+
+function renderCalculatorPage(calc, site, engineSource, allCalcs) {
+  const canonical = `${site.baseUrl}/${calc.slug}/`;
+  const related = (calc.related || []).map(slug => allCalcs.find(c => c.slug === slug)).filter(Boolean);
+  return `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(calc.seo.title)}</title>
+<meta name="description" content="${esc(calc.seo.description)}">
+<meta name="keywords" content="${esc((calc.seo.keywords || []).join(', '))}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(calc.seo.title)}">
+<meta property="og:description" content="${esc(calc.seo.description)}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="${esc(site.brand)}">
+<meta name="twitter:card" content="summary_large_image">
+${fonts()}
+<style>${CSS}</style>
+${jsonLd(calc, site, canonical)}
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <a href="${site.baseUrl}/" class="wordmark">Mi Plan <span>FIRE</span><small>Calculadoras</small></a>
+  <a href="${site.appUrl}" class="app">Abrir la app →</a>
+</div></header>
+
+<main class="wrap">
+  <div class="crumb"><a href="${site.baseUrl}/">Calculadoras</a> · <b>${esc(calc.hero.eyebrow.replace('Calculadora · ', ''))}</b></div>
+
+  <section class="hero">
+    <div class="eyebrow">${esc(calc.hero.eyebrow)}</div>
+    <h1>${esc(calc.hero.h1)}</h1>
+    <p class="intro">${esc(calc.hero.intro)}</p>
+  </section>
+
+  <section class="calc">
+    <div class="calc-grid">
+      <div class="inputs">
+        <h2>Tus datos</h2>
+        ${calc.inputs.map(renderField).join('')}
+      </div>
+      <div class="results">
+        <h2>El resultado</h2>
+        ${calc.outputs.map(renderResult).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">${esc(site.cta.eyebrow)}</div>
+    <h2>${esc(site.cta.title)}</h2>
+    <p>${esc(site.cta.body)}</p>
+    <a class="btn" id="cta-link" href="${site.appUrl}/?utm_source=calculadora&utm_medium=funnel&calc=${calc.slug}">${esc(site.cta.button)} →</a>
+    <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
+  </section>
+
+  <section class="prose">
+    ${calc.explainer.map(e => `<h2>${esc(e.h)}</h2><p>${esc(e.p)}</p>`).join('')}
+  </section>
+
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+    ${calc.faq.map(f => `<details class="q"><summary>${esc(f.q)}<span class="plus">+</span></summary><div class="qa">${esc(f.a)}</div></details>`).join('')}
+  </section>
+
+  ${related.length ? `<section class="related">
+    <h2>Calculadoras relacionadas</h2>
+    <div class="relgrid">
+      ${related.map(r => `<a class="relcard" href="${site.baseUrl}/${r.slug}/"><div class="rc-eye">${esc(r.category)}</div><div class="rc-t">${esc(r.hero.eyebrow.replace('Calculadora · ', ''))}</div></a>`).join('')}
+    </div>
+  </section>` : ''}
+</main>
+
+<footer><div class="wrap">
+  <p class="disc">${esc(site.disclaimer)}</p>
+  <div class="fnav">${footerNav(allCalcs, site)}</div>
+</div></footer>
+
+<script>${engineSource}</script>
+<script>${clientRuntime(calc, site)}</script>
+</body>
+</html>`;
+}
+
+function renderHubPage(calculators, site) {
+  const canonical = site.baseUrl + '/';
+  // group by category
+  const cats = {};
+  calculators.forEach(c => { (cats[c.category] = cats[c.category] || []).push(c); });
+  const itemList = {
+    '@context': 'https://schema.org', '@type': 'ItemList',
+    itemListElement: calculators.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.seo.title.split('|')[0].trim(), url: site.baseUrl + '/' + c.slug + '/' }))
+  };
+  const cards = Object.keys(cats).map(cat => `
+    <div class="cat">
+      <h2 class="cat-h">${esc(cat)}</h2>
+      <div class="relgrid">
+        ${cats[cat].map(c => `<a class="relcard" href="${site.baseUrl}/${c.slug}/">
+          <div class="rc-eye">${esc(c.hero.eyebrow.replace('Calculadora · ', ''))}</div>
+          <div class="rc-t">${esc(c.hero.h1)}</div>
+          <p class="help" style="margin-top:8px;">${esc(c.hero.intro.slice(0, 96))}…</p>
+        </a>`).join('')}
+      </div>
+    </div>`).join('');
+  return `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(site.hub.title)}</title>
+<meta name="description" content="${esc(site.hub.description)}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(site.hub.title)}">
+<meta property="og:description" content="${esc(site.hub.description)}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:locale" content="es_ES">
+${fonts()}
+<style>${CSS}
+.cat{margin:34px 0;}.cat-h{font-size:clamp(20px,3vw,26px);margin-bottom:14px;letter-spacing:-.01em;}
+.hubhero{padding:30px 0 6px;}.hubhero h1{font-size:clamp(32px,6vw,54px);letter-spacing:-.015em;margin:10px 0 14px;}
+.hubhero h1 em{font-style:normal;color:var(--terra);}
+.hubhero .intro{font-size:clamp(16px,2.4vw,21px);color:var(--inksoft);max-width:680px;line-height:1.45;}
+.relcard .help{color:var(--muted);font-size:13px;}</style>
+<script type="application/ld+json">${JSON.stringify(itemList)}</${'script'}>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <a href="${canonical}" class="wordmark">Mi Plan <span>FIRE</span><small>Calculadoras</small></a>
+  <a href="${site.appUrl}" class="app">Abrir la app →</a>
+</div></header>
+<main class="wrap">
+  <section class="hubhero">
+    <div class="eyebrow">${esc(site.tagline)}</div>
+    <h1>${esc(site.hub.h1).replace('libertad financiera', '<em>libertad financiera</em>')}</h1>
+    <p class="intro">${esc(site.hub.intro)}</p>
+  </section>
+  ${cards}
+  <section class="cta">
+    <div class="eyebrow">${esc(site.cta.eyebrow)}</div>
+    <h2>${esc(site.cta.title)}</h2>
+    <p>${esc(site.cta.body)}</p>
+    <a class="btn" href="${site.appUrl}/?utm_source=calculadora&utm_medium=hub">${esc(site.cta.button)} →</a>
+    <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
+  </section>
+</main>
+<footer><div class="wrap"><p class="disc">${esc(site.disclaimer)}</p></div></footer>
+</body>
+</html>`;
+}
+
+module.exports = { renderCalculatorPage, renderHubPage };
