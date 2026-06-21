@@ -34,9 +34,9 @@ const calculators = [
     slug: 'regla-del-4-por-ciento',
     category: 'Tu número',
     seo: {
-      title: 'Calculadora de la Regla del 4 % | Tu número FIRE en euros',
-      description: 'Calcula tu número de independencia financiera con la regla del 4 %. Descubre cuánto patrimonio necesitas para vivir de tus inversiones, en euros.',
-      keywords: ['regla del 4 por ciento', 'calculadora regla del 4%', 'número FIRE', 'independencia financiera', 'tasa de retiro seguro']
+      title: 'Calculadora Regla del 4% | Independencia Financiera y Jubilación Anticipada España',
+      description: 'Calcula tu número FIRE con la regla del 4 %: cuánto patrimonio necesitas para vivir de tus inversiones sin trabajar. Gratis, en euros, sin registro.',
+      keywords: ['calculadora regla del 4 por ciento', 'regla del 4% jubilacion', 'número FIRE', 'independencia financiera España', 'jubilación anticipada calculadora', 'tasa de retiro seguro', 'calculadora FIRE']
     },
     hero: {
       eyebrow: 'Calculadora · Regla del 4 %',
@@ -60,6 +60,7 @@ const calculators = [
     faq: [
       { q: '¿Por qué multiplicar por 25?', a: 'Porque 100 ÷ 4 = 25. Si retiras el 4 % anual, necesitas 25 veces tu gasto anual. Con un 3,5 % serían ~28,5 veces; con un 3 %, ~33 veces.' },
       { q: '¿Funciona la regla del 4 % en España?', a: 'El concepto sí, pero los números de referencia cambian: muchos usan tasas de retiro algo más bajas (3–3,5 %) por horizontes largos, y conviene contar con la pensión pública como colchón posterior.' },
+      { q: '¿Cómo afecta el IRPF a la regla del 4 % en España?', a: 'Los retiros de tu cartera tributan en IRPF como rendimientos del capital mobiliario: 19 % hasta 6.000 €, 21 % hasta 50.000 €, 23–28 % a partir de ahí. En la práctica, para recibir netos lo que gastas, los retiros brutos deben ser algo mayores. Muchos planificadores FIRE en España usan un 3,5 % como tasa práctica para absorber la presión fiscal.' },
       { q: '¿Cuento mi vivienda en el número?', a: 'No, salvo que pienses venderla. El número FIRE se refiere al patrimonio invertido del que retiras; tu casa no genera la renta del 4 %.' }
     ],
     related: ['cuanto-necesito-para-ser-libre', 'lean-fat-fire', 'cuando-puedo-jubilarme']
@@ -70,9 +71,9 @@ const calculators = [
     slug: 'cuanto-necesito-para-ser-libre',
     category: 'Tu número',
     seo: {
-      title: 'Cuánto necesito para ser libre financieramente | Calculadora',
-      description: 'Calcula cuánto dinero necesitas para la independencia financiera y en cuántos años lo alcanzas según tu ahorro mensual y rentabilidad.',
-      keywords: ['cuánto necesito para ser libre', 'cuánto dinero para jubilarme', 'independencia financiera', 'años hasta FIRE']
+      title: '¿Cuánto necesito para jubilarme? | Calculadora Independencia Financiera España',
+      description: '¿Cuánto dinero necesitas para ser libre y en cuántos años lo alcanzas? Calcula tu número FIRE y tu plazo con tu ahorro mensual y rentabilidad. Gratis y sin registro.',
+      keywords: ['cuánto necesito para jubilarme', 'cuánto dinero para ser libre financieramente', 'calculadora independencia financiera España', 'cuánto necesito para ser libre', 'años hasta FIRE', 'número FIRE calculadora']
     },
     hero: {
       eyebrow: 'Calculadora · Tu meta y tu plazo',
@@ -99,6 +100,7 @@ const calculators = [
     faq: [
       { q: '¿Y si no puedo aportar tanto?', a: 'Baja la aportación y mira el plazo. Casi siempre la palanca más potente no es ganar más, sino subir la tasa de ahorro: reducir gasto baja tu número y sube tu aporte a la vez.' },
       { q: '¿La rentabilidad del 5 % es realista?', a: 'Es una media histórica razonable para una cartera indexada global, ya descontada la inflación. Hay años mucho mejores y mucho peores; el largo plazo suaviza el camino, no lo elimina.' },
+      { q: '¿Es posible la independencia financiera en España?', a: 'Sí, y cada vez más gente lo consigue. Las claves son las mismas que en cualquier país: tasa de ahorro alta, inversión en fondos indexados de bajo coste y horizonte largo. España añade un elemento extra positivo: la pensión pública actúa de colchón a partir de los 65–67 años, lo que reduce el capital que necesitas acumular.' },
       { q: '¿Incluye la pensión pública?', a: 'No, esta calculadora no. La pensión llega a partir de la edad legal y alarga la vida de tu dinero; eso se modela en la app completa.' }
     ],
     related: ['cuando-puedo-jubilarme', 'tasa-de-ahorro', 'regla-del-4-por-ciento']
@@ -109,9 +111,9 @@ const calculators = [
     slug: 'interes-compuesto',
     category: 'Fundamentos',
     seo: {
-      title: 'Calculadora de Interés Compuesto | Cuánto crece tu dinero',
-      description: 'Calcula el interés compuesto de tus inversiones: capital inicial, aportación mensual, años y rentabilidad. Mira cuánto pones tú y cuánto pone el interés.',
-      keywords: ['calculadora interés compuesto', 'interés compuesto', 'inversión a largo plazo', 'aportación mensual']
+      title: 'Calculadora de Interés Compuesto | Cuánto crece tu inversión con el tiempo',
+      description: 'Calcula el interés compuesto de tu inversión: capital inicial, aportación mensual, años y rentabilidad. Ve cuánto aportas tú y cuánto genera el tiempo. Gratis.',
+      keywords: ['calculadora interés compuesto', 'interés compuesto España', 'calcular interés compuesto inversión', 'cuánto crece mi dinero', 'inversión fondos indexados', 'aportación mensual rentabilidad']
     },
     hero: {
       eyebrow: 'Calculadora · Interés compuesto',
@@ -147,9 +149,9 @@ const calculators = [
     slug: 'coast-fire',
     category: 'Estrategias',
     seo: {
-      title: 'Calculadora Coast FIRE | ¿Puedes dejar de aportar ya?',
-      description: 'Calcula tu número Coast FIRE: cuánto necesitas invertido hoy para que, sin aportar más, tu cartera crezca sola hasta tu jubilación.',
-      keywords: ['coast fire', 'calculadora coast fire', 'barista fire', 'independencia financiera parcial']
+      title: 'Calculadora Coast FIRE en español | ¿Puedes dejar de aportar ya?',
+      description: 'Calcula tu número Coast FIRE: cuánto necesitas invertido hoy para que tu cartera crezca sola hasta la jubilación, sin aportar ni un euro más. Gratis.',
+      keywords: ['calculadora coast fire', 'coast fire español', 'coast fire España', 'barista fire', 'independencia financiera parcial', 'cuánto necesito invertido para coast fire']
     },
     hero: {
       eyebrow: 'Calculadora · Coast FIRE',
@@ -177,6 +179,7 @@ const calculators = [
     faq: [
       { q: '¿En qué se diferencia del número FIRE normal?', a: 'El número FIRE es lo que necesitas para vivir de rentas ya. El Coast FIRE es lo que necesitas HOY para llegar a ese número sin aportar más, solo dejando crecer.' },
       { q: '¿Tengo que dejar de trabajar al llegar?', a: 'No. Coast FIRE solo significa que puedes dejar de aportar. Mucha gente sigue trabajando y aportando igual: simplemente lo hace con la tranquilidad de tener red.' },
+      { q: '¿Qué relación tiene con el Barista FIRE?', a: 'Barista FIRE y Coast FIRE comparten la idea de no necesitar seguir acumulando. La diferencia: Coast FIRE es el punto en que puedes dejar de aportar y la cartera llega sola a la jubilación tardía. Barista FIRE va un paso más allá: ya puedes dejar el trabajo exigente y cubrir tus gastos con un trabajo a tiempo parcial que te guste, sin tocar la cartera.' },
       { q: '¿Y si el mercado cae justo entonces?', a: 'El plan asume una rentabilidad media; en la práctica habrá baches. La app completa simula miles de caminos para ver cuántos aguantan, no solo el escenario medio.' }
     ],
     related: ['cuando-puedo-jubilarme', 'interes-compuesto', 'tasa-de-ahorro']
@@ -187,9 +190,9 @@ const calculators = [
     slug: 'cuando-puedo-jubilarme',
     category: 'Tu número',
     seo: {
-      title: 'Calculadora ¿Cuándo puedo jubilarme? | A qué edad serás libre',
-      description: 'Calcula a qué edad alcanzarás la independencia financiera según tu patrimonio, tu aportación mensual y la rentabilidad esperada.',
-      keywords: ['cuándo puedo jubilarme', 'a qué edad me puedo jubilar', 'jubilación anticipada calculadora', 'edad independencia financiera']
+      title: '¿Cuándo puedo jubilarme? | Calculadora de Jubilación Anticipada en España',
+      description: 'Calcula a qué edad alcanzarás la independencia financiera y podrás dejar de trabajar. Pon tu patrimonio, tu ahorro mensual y la rentabilidad y obtén tu fecha.',
+      keywords: ['cuándo puedo jubilarme', 'calculadora jubilación anticipada España', 'a qué edad me puedo jubilar', 'cuándo me puedo retirar', 'edad independencia financiera', 'cuando puedo dejar de trabajar']
     },
     hero: {
       eyebrow: 'Calculadora · Tu fecha de libertad',
@@ -217,6 +220,7 @@ const calculators = [
     faq: [
       { q: '¿Por qué me sale "más de 60 años"?', a: 'Significa que, con esas cifras, el plan no alcanza el número en un horizonte razonable. Sube la aportación o baja el gasto y mira cómo aparece una fecha.' },
       { q: '¿Cuenta la inflación?', a: 'Sí, indirectamente: usamos rentabilidad real, así que la cifra y la fecha están en términos de poder adquisitivo de hoy.' },
+      { q: '¿Puedo dejar de trabajar antes de los 65 en España?', a: 'Sí. La independencia financiera FIRE no requiere acceder a la pensión pública: vives de los retiros de tu cartera hasta que llegue la pensión (65–67 años según cotización). La pensión pública llega después y actúa de colchón extra que alarga la vida de tu dinero. El único requisito legal es tener cubierta la sanidad (mutua privada o convenio especial con la Seguridad Social).' },
       { q: '¿Es lo mismo que "cuánto necesito"?', a: 'Comparten motor, pero esta lo enfoca en tu edad y fecha; la otra, en la cifra y el plazo. Usa la que encaje con cómo piensas tu objetivo.' }
     ],
     related: ['cuanto-necesito-para-ser-libre', 'tasa-de-ahorro', 'coast-fire']
@@ -227,9 +231,9 @@ const calculators = [
     slug: 'tasa-de-ahorro',
     category: 'Estrategias',
     seo: {
-      title: 'Calculadora de Tasa de Ahorro | Cuánto adelanta tu libertad',
-      description: 'Descubre cómo tu tasa de ahorro decide tu fecha de libertad financiera. No es cuánto ganas: es qué porcentaje guardas.',
-      keywords: ['tasa de ahorro', 'porcentaje de ahorro FIRE', 'cuánto ahorrar para jubilarse', 'savings rate']
+      title: 'Calculadora de Tasa de Ahorro FIRE | Cuánto adelanta tu jubilación anticipada',
+      description: 'Descubre cómo tu tasa de ahorro decide tu fecha de libertad financiera. No es cuánto ganas: es el porcentaje que guardas. Calcula cuántos años te faltan.',
+      keywords: ['tasa de ahorro FIRE', 'calculadora tasa de ahorro', 'cuánto ahorrar para jubilarme antes', 'savings rate jubilación', 'porcentaje ahorro independencia financiera', 'cuánto ahorrar al mes FIRE']
     },
     hero: {
       eyebrow: 'Calculadora · Tasa de ahorro',
@@ -256,6 +260,7 @@ const calculators = [
     faq: [
       { q: '¿Cómo calculo mi tasa de ahorro real?', a: 'Lo que inviertes dividido entre lo que ingresas, en neto. Si ingresas 2.000 € y guardas 600 €, tu tasa es 30 %.' },
       { q: '¿No es imposible ahorrar el 50 %?', a: 'Es exigente, no imposible. Quienes lo logran suelen combinar gasto controlado con ingresos crecientes. No hace falta llegar al 50 %; cada punto que subas adelanta tu fecha.' },
+      { q: '¿Cuánto debería ahorrar para jubilarme antes de los 50 en España?', a: 'La comunidad FIRE española habla de tasas del 40–60 % para retiros antes de los 50. A una tasa del 50 %, el horizonte suele rondar los 15–17 años desde que empiezas. Con la pensión pública como respaldo a partir de los 65–67, puedes ser algo menos conservador en tu tasa de retiro.' },
       { q: '¿Y los ingresos irregulares?', a: 'Usa tu media anual. Si tienes meses muy buenos, lo importante es que el extra vaya a inversión y no a inflar el gasto fijo.' }
     ],
     related: ['cuando-puedo-jubilarme', 'cuanto-necesito-para-ser-libre', 'interes-compuesto']
@@ -266,9 +271,9 @@ const calculators = [
     slug: 'lean-fat-fire',
     category: 'Tu número',
     seo: {
-      title: 'Calculadora Lean FIRE vs Fat FIRE | Tres niveles de libertad',
-      description: 'Calcula tus números Lean FIRE, FIRE pleno y Fat FIRE según tu gasto. Tres estilos de independencia financiera: ajustado, normal y holgado.',
-      keywords: ['lean fire', 'fat fire', 'lean fire vs fat fire', 'tipos de FIRE', 'número FIRE']
+      title: 'Calculadora Lean FIRE, Barista FIRE y Fat FIRE | Los tres niveles de libertad',
+      description: 'Calcula tus números Lean, Pleno y Fat FIRE según tu gasto. Tres estilos de independencia financiera: ajustado, normal y con holgura. ¿A cuál apuntas?',
+      keywords: ['lean fire', 'fat fire', 'barista fire', 'lean fire vs fat fire', 'tipos de FIRE España', 'lean fire calculadora', 'fat fire calculadora', 'cuánto necesito para fat fire']
     },
     hero: {
       eyebrow: 'Calculadora · Lean / Pleno / Fat',
@@ -292,6 +297,7 @@ const calculators = [
     faq: [
       { q: '¿De dónde salen los multiplicadores 0,7 y 1,5?', a: 'Son una convención orientativa: Lean asume vivir con ~30 % menos, Fat con ~50 % más. Ajusta tu gasto base y verás cómo se mueven las tres cifras.' },
       { q: '¿Puedo empezar Lean y subir luego?', a: 'Sí, es muy común. Alcanzas Lean FIRE antes, ganas opciones, y sigues acumulando hacia Pleno o Fat con mucha menos presión.' },
+      { q: '¿Qué es el Barista FIRE?', a: 'El punto intermedio entre seguir acumulando y el retiro total. Alcanzas Coast FIRE o Lean FIRE y dejas el trabajo exigente, pero sigues con un trabajo parcial o satisfactorio que cubre los gastos del día a día. Tu cartera sigue creciendo sin tocarla. El nombre viene de quien deja la empresa y trabaja de barista por placer.' },
       { q: '¿Cuál recomienda la regla del 4 %?', a: 'La regla solo da el multiplicador; el nivel lo eliges tú con tu gasto. Para horizontes largos, sé algo más prudente con la tasa de retiro en cualquiera de los tres.' }
     ],
     related: ['regla-del-4-por-ciento', 'cuanto-necesito-para-ser-libre', 'coast-fire']
@@ -327,6 +333,7 @@ const calculators = [
     faq: [
       { q: '¿Por qué importa la pensión si quiero FIRE?', a: 'Porque no la pierdes por jubilarte antes de lo legal: entra a partir de la edad oficial y alarga la vida de tu cartera. Ignorarla hace que sobreestimes lo que necesitas.' },
       { q: '¿Cuál es la edad de jubilación en España?', a: 'Se sitúa en torno a los 65–67 años según los años cotizados, y va cambiando con la normativa. La pensión de esta calculadora se cobra a partir de esa edad.' },
+      { q: '¿Qué pasa con mi pensión si dejo de cotizar antes de los 65?', a: 'Los años sin cotización cuentan como cero en tu historial. Con la normativa actual, cada año que dejas de cotizar antes del mínimo puede reducir tu pensión final. Si te retiras con 40 años cotizados o más, el efecto es pequeño; si te retiras con 15–20, la pensión puede ser significativamente menor. Consulta tu vida laboral en la Sede Electrónica de la Seguridad Social para ver tu situación exacta.' },
       { q: '¿Esto cuenta como asesoramiento?', a: 'No. Es una estimación educativa muy simplificada. Para tu cifra real, usa los simuladores de la Seguridad Social y revisa tu informe de vida laboral.' }
     ],
     related: ['cuando-puedo-jubilarme', 'cuanto-necesito-para-ser-libre', 'inflacion-poder-adquisitivo']
