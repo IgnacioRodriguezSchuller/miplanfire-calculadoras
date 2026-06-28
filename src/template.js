@@ -269,7 +269,7 @@ ${jsonLd(calc, site, canonical)}
 
 <footer><div class="wrap">
   <p class="disc">${esc(site.disclaimer)}</p>
-  <div class="fnav">${footerNav(allCalcs, site)}</div>
+  <div class="fnav"><a href="${site.baseUrl}/guias/">Guías</a>${footerNav(allCalcs, site)}</div>
 </div></footer>
 
 <script>${engineSource}</script>
@@ -341,9 +341,13 @@ ${fonts()}
     <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
   </section>
 </main>
-<footer><div class="wrap"><p class="disc">${esc(site.disclaimer)}</p></div></footer>
+<footer><div class="wrap"><p class="disc">${esc(site.disclaimer)}</p>
+  <div class="fnav"><a href="${canonical}">Calculadoras</a><a href="${site.baseUrl}/guias/">Guías</a><a href="${site.appUrl}">Abrir la app</a></div>
+</div></footer>
 </body>
 </html>`;
 }
 
-module.exports = { renderCalculatorPage, renderHubPage };
+// CSS/fonts/esc se exportan para que la plantilla de guías (src/guia-template.js)
+// reutilice EXACTAMENTE el mismo sistema de diseño. No cambia nada del render de calculadoras.
+module.exports = { renderCalculatorPage, renderHubPage, CSS, fonts, esc };
