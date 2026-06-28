@@ -287,6 +287,9 @@ function renderHubPage(calculators, site) {
     '@context': 'https://schema.org', '@type': 'ItemList',
     itemListElement: calculators.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.seo.title.split('|')[0].trim(), url: site.baseUrl + '/' + c.slug + '/' }))
   };
+  // Identidad site-wide (E-E-A-T): la home declara la Organización y el WebSite.
+  const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: site.brand, url: site.baseUrl, description: site.hub.description, sameAs: [site.appUrl] };
+  const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.brand, url: site.baseUrl, inLanguage: 'es-ES' };
   const cards = Object.keys(cats).map(cat => `
     <div class="cat">
       <h2 class="cat-h">${esc(cat)}</h2>
@@ -320,6 +323,8 @@ ${fonts()}
 .hubhero .intro{font-size:clamp(16px,2.4vw,21px);color:var(--inksoft);max-width:680px;line-height:1.45;}
 .relcard .help{color:var(--muted);font-size:13px;}</style>
 <script type="application/ld+json">${JSON.stringify(itemList)}</${'script'}>
+<script type="application/ld+json">${JSON.stringify(orgLd)}</${'script'}>
+<script type="application/ld+json">${JSON.stringify(siteLd)}</${'script'}>
 </head>
 <body>
 <header class="bar"><div class="bar-in">
