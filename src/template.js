@@ -274,6 +274,7 @@ ${jsonLd(calc, site, canonical)}
 
 <script>${engineSource}</script>
 <script>${clientRuntime(calc, site)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>`;
 }
@@ -349,6 +350,7 @@ ${fonts()}
 <footer><div class="wrap"><p class="disc">${esc(site.disclaimer)}</p>
   <div class="fnav"><a href="${canonical}">Calculadoras</a><a href="${site.baseUrl}/guias/">Guías</a><a href="${site.appUrl}">Abrir la app</a></div>
 </div></footer>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>`;
 }

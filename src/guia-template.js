@@ -56,7 +56,8 @@ function footer(site) {
     <a href="${site.baseUrl}/guias/">Guías</a>
     <a href="${site.appUrl}">Abrir la app</a>
   </div>
-</div></footer>`;
+</div></footer>
+<script defer src="/_vercel/insights/script.js"></script>`;
 }
 
 function faqHtml(faq) {
