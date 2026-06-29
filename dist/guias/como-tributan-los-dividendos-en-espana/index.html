@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo tributan los dividendos en España: tramos, retención y doble imposición</title>
+<meta name="description" content="Los dividendos tributan en la base del ahorro del IRPF: 19 % hasta 6.000 €, 21 % hasta 50.000 €… Te explicamos los tramos de 2026, la retención del 19 % y qué pasa con los dividendos de empresas extranjeras.">
+<meta name="keywords" content="dividendos, IRPF, base del ahorro, fiscalidad inversión, doble imposición">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo tributan los dividendos en España: tramos, retención y doble imposición">
+<meta property="og:description" content="Los dividendos tributan en la base del ahorro del IRPF: 19 % hasta 6.000 €, 21 % hasta 50.000 €… Te explicamos los tramos de 2026, la retención del 19 % y qué pasa con los dividendos de empresas extranjeras.">
+<meta property="og:url" content="https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Mi Plan FIRE">
+<meta property="article:modified_time" content="2026-06-22">
+<meta property="article:published_time" content="2026-06-22">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1EBDE;--paper2:#FAF6EE;--ink:#221C14;--inksoft:#574E42;--muted:#8D8173;
+--line:#DCD2C2;--terra:#BC5635;--terradeep:#94401F;--olive:#5E6B43;--amber:#BE8629;--rad:14px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;
+font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"DM Mono",ui-monospace,monospace;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+h1,h2,h3{font-weight:500;line-height:1.1;margin:0;}
+a{color:var(--terradeep);text-decoration:none;}
+.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+/* header */
+header.bar{border-bottom:1px solid var(--line);background:rgba(241,235,222,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;}
+.bar-in{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;max-width:1000px;margin:0 auto;}
+.wordmark{font-size:20px;font-weight:500;letter-spacing:-.01em;}
+.wordmark span{color:var(--terra);}
+.wordmark small{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:8px;}
+.bar a.app{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:7px 13px;}
+.bar a.app:hover{background:var(--ink);color:var(--paper);}
+/* breadcrumb */
+.crumb{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);padding:18px 0 0;letter-spacing:.03em;}
+.crumb a{color:var(--muted);} .crumb b{color:var(--inksoft);font-weight:400;}
+/* hero */
+.hero{padding:14px 0 8px;}
+.hero h1{font-size:clamp(28px,5.4vw,46px);letter-spacing:-.015em;margin:10px 0 12px;}
+.hero .intro{font-size:clamp(16px,2.3vw,20px);color:var(--inksoft);max-width:680px;line-height:1.45;}
+/* calculator card */
+.calc{background:var(--paper2);border:1px solid var(--line);border-radius:var(--rad);margin:26px 0;overflow:hidden;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:740px){.calc-grid{grid-template-columns:1fr;}}
+.inputs{padding:24px 24px;border-right:1px solid var(--line);}
+@media(max-width:740px){.inputs{border-right:none;border-bottom:1px solid var(--line);}}
+.inputs h2,.results h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.field{margin-bottom:18px;}
+.field-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.field label{font-size:15.5px;color:var(--ink);font-weight:500;}
+.field .unit{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);white-space:nowrap;}
+.field-controls{display:flex;align-items:center;gap:12px;margin-top:8px;}
+input[type=number]{font-family:"DM Mono",monospace;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:108px;text-align:right;}
+input[type=number]:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 2px #BC563533;}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:99px;background:#E0D6C4;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);box-shadow:0 1px 4px #0002;}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);}
+.help{font-size:12.5px;color:var(--muted);margin:7px 0 0;line-height:1.45;}
+/* results */
+.results{padding:24px 24px;display:flex;flex-direction:column;gap:14px;}
+.result{border-bottom:1px dashed var(--line);padding-bottom:13px;}
+.result:last-child{border-bottom:none;padding-bottom:0;}
+.rlabel{font-size:13.5px;color:var(--inksoft);}
+.rvalue{font-size:26px;font-weight:500;letter-spacing:-.01em;margin-top:2px;}
+.rsub{font-size:12px;color:var(--muted);margin-top:1px;}
+.result.big .rvalue{font-size:clamp(38px,7vw,52px);color:var(--terra);line-height:1;}
+.result.big .rlabel{font-size:14px;}
+/* cta funnel */
+.cta{background:var(--ink);color:#ECE3D4;border-radius:var(--rad);padding:26px 26px;margin:26px 0;}
+.cta .eyebrow{color:#9A8F7C;}
+.cta h2{font-size:clamp(22px,3.4vw,30px);color:#fff;margin:8px 0 10px;letter-spacing:-.01em;}
+.cta p{color:#D8CFBE;font-size:16px;line-height:1.5;max-width:620px;margin:0 0 18px;}
+.cta a.btn{display:inline-block;background:var(--terra);color:#fff;font-weight:500;font-size:16px;padding:13px 22px;border-radius:10px;}
+.cta a.btn:hover{background:#cf6442;}
+.cta .note{font-family:"DM Mono",monospace;font-size:11px;color:#9A8F7C;margin-top:12px;letter-spacing:.03em;}
+/* prose */
+.prose{margin:30px 0;}
+.prose h2{font-size:clamp(21px,3vw,28px);margin:26px 0 8px;letter-spacing:-.01em;}
+.prose p{color:var(--inksoft);font-size:16.5px;line-height:1.6;margin:0 0 10px;max-width:720px;}
+/* faq */
+.faq{margin:30px 0;}
+.faq h2{font-size:clamp(21px,3vw,28px);margin-bottom:14px;}
+details.q{border:1px solid var(--line);border-radius:12px;background:var(--paper2);margin-bottom:10px;overflow:hidden;}
+details.q>summary{list-style:none;cursor:pointer;padding:15px 18px;font-size:17px;font-weight:500;display:flex;justify-content:space-between;gap:12px;}
+details.q>summary::-webkit-details-marker{display:none;}
+details.q .qa{padding:0 18px 16px;color:var(--inksoft);font-size:15.5px;line-height:1.55;max-width:700px;}
+details.q .plus{color:var(--terra);font-family:"DM Mono",monospace;transition:transform .2s;}
+details.q[open] .plus{transform:rotate(45deg);}
+/* related + footer */
+.related{margin:34px 0;}
+.related h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:740px){.relgrid{grid-template-columns:1fr;}}
+.relcard{display:block;border:1px solid var(--line);border-radius:12px;background:var(--paper2);padding:15px 16px;}
+.relcard:hover{border-color:var(--terra);}
+.relcard .rc-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.relcard .rc-t{font-size:16px;font-weight:500;margin-top:4px;color:var(--ink);}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:28px 0 50px;}
+footer .disc{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);line-height:1.6;max-width:760px;}
+footer .fnav{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 16px;}
+footer .fnav a{font-size:13px;color:var(--inksoft);}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+.guia-wrap{max-width:760px;}
+.article{margin:8px 0 0;}
+.article h2{font-size:clamp(22px,3.4vw,31px);letter-spacing:-.01em;margin:36px 0 12px;color:var(--ink);}
+.article h3{font-size:clamp(18px,2.6vw,22px);margin:28px 0 8px;color:var(--ink);}
+.article p{color:var(--inksoft);font-size:17.5px;line-height:1.68;margin:0 0 17px;}
+.article ul,.article ol{color:var(--inksoft);font-size:17.5px;line-height:1.66;margin:0 0 17px;padding-left:24px;}
+.article li{margin:7px 0;}
+.article li::marker{color:var(--terra);}
+.article a{color:var(--terradeep);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;}
+.article a:hover{color:var(--terra);}
+.article strong{color:var(--ink);font-weight:600;}
+.article blockquote{border-left:3px solid var(--terra);margin:20px 0;padding:6px 0 6px 18px;color:var(--inksoft);font-style:italic;}
+.article blockquote p{margin:0;}
+.article code{font-family:"DM Mono",monospace;font-size:.9em;background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;}
+.article pre{background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;margin:0 0 17px;}
+.article pre code{border:none;background:none;padding:0;}
+.article hr{border:none;border-top:1px solid var(--line);margin:30px 0;}
+.article table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15.5px;}
+.article th,.article td{border:1px solid var(--line);padding:9px 12px;text-align:left;color:var(--inksoft);vertical-align:top;}
+.article th{background:var(--paper2);color:var(--ink);font-weight:500;}
+.article h2 a,.article h3 a{color:inherit;text-decoration:none;}
+@media(max-width:560px){.article table{display:block;overflow-x:auto;font-size:14px;}}
+.guia-meta{font-family:"DM Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.02em;margin:14px 0 0;display:flex;gap:14px;flex-wrap:wrap;}
+.guia-tags{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px;}
+.guia-tags span{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 11px;}
+.disc-box{border:1px solid var(--line);background:var(--paper2);border-radius:12px;padding:15px 18px;margin:30px 0 0;}
+.disc-box p{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--muted);line-height:1.65;margin:0;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cómo tributan los dividendos en España: tramos, retención y doble imposición","description":"Los dividendos tributan en la base del ahorro del IRPF: 19 % hasta 6.000 €, 21 % hasta 50.000 €… Te explicamos los tramos de 2026, la retención del 19 % y qué pasa con los dividendos de empresas extranjeras.","inLanguage":"es-ES","url":"https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/","mainEntityOfPage":"https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/","author":{"@type":"Organization","name":"Mi Plan FIRE","url":"https://calculadoras.miplanfire.com"},"publisher":{"@type":"Organization","name":"Mi Plan FIRE","url":"https://calculadoras.miplanfire.com"},"datePublished":"2026-06-22","dateModified":"2026-06-22","citation":[{"@type":"CreativeWork","name":"Agencia Tributaria — Cuadro de tipos de retención del IRPF 2026 (PDF oficial)","url":"https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/CUADRO_TIPOS_RETENCION_IRPF_2026.pdf"},{"@type":"CreativeWork","name":"Agencia Tributaria — Sede electrónica (Manual de Renta, rendimientos del capital mobiliario)","url":"https://sede.agenciatributaria.gob.es/"},{"@type":"CreativeWork","name":"BOE — Ley 7/2024 (modificación de la escala de la base del ahorro)","url":"https://www.boe.es/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Guías","item":"https://calculadoras.miplanfire.com/guias/"},{"@type":"ListItem","position":2,"name":"Cómo tributan los dividendos en España: tramos, retención y doble imposición","item":"https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto me retienen al cobrar un dividendo en España?","acceptedAnswer":{"@type":"Answer","text":"Un 19 % a cuenta del IRPF. No es el impuesto definitivo: es un adelanto que se ajusta en tu declaración de la renta según los tramos de la base del ahorro."}},{"@type":"Question","name":"¿Los dividendos tributan igual en toda España?","acceptedAnswer":{"@type":"Answer","text":"Sí. La escala de la base del ahorro es estatal y no la modifican las comunidades autónomas, así que pagas lo mismo por tus dividendos vivas donde vivas. Lo que sí cambia por comunidad es la tributación de tu sueldo (base general), no la de tus inversiones."}},{"@type":"Question","name":"¿Pago dos veces por los dividendos de acciones de EE. UU.?","acceptedAnswer":{"@type":"Answer","text":"No deberías. El país de origen retiene en la fuente (15 % en EE. UU. con el W-8BEN) y en España aplicas la deducción por doble imposición internacional para no tributar dos veces por la misma renta, dentro del límite del convenio."}},{"@type":"Question","name":"¿Es mejor acumulación o distribución para no pagar por los dividendos?","acceptedAnswer":{"@type":"Answer","text":"En fase de acumulación, los fondos y ETF de acumulación difieren el impuesto: reinvierten los dividendos sin que tributes hasta que vendes. Si vives de las rentas, los de distribución te dan flujo de caja periódico. Depende de tu fase, no hay uno &quot;mejor&quot; en abstracto."}},{"@type":"Question","name":"¿Tengo que declarar dividendos pequeños?","acceptedAnswer":{"@type":"Answer","text":"Sí. No existe un mínimo exento para los dividendos: tributan desde el primer euro y se incluyen en tu declaración de la renta."}}]}</script>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <a href="https://calculadoras.miplanfire.com/" class="wordmark">Mi Plan <span>FIRE</span><small>Guías</small></a>
+  <a href="https://app.miplanfire.com" class="app">Abrir la app →</a>
+</div></header>
+
+<main class="wrap guia-wrap">
+  <div class="crumb"><a href="https://calculadoras.miplanfire.com/">Inicio</a> · <a href="https://calculadoras.miplanfire.com/guias/">Guías</a> · <b>Fiscalidad</b></div>
+
+  <section class="hero">
+    <div class="eyebrow">Guía · Fiscalidad</div>
+    <h1>Cómo tributan los dividendos en España: tramos, retención y doble imposición</h1>
+    <p class="intro">Los dividendos tributan en la base del ahorro del IRPF: 19 % hasta 6.000 €, 21 % hasta 50.000 €… Te explicamos los tramos de 2026, la retención del 19 % y qué pasa con los dividendos de empresas extranjeras.</p>
+    <div class="guia-meta"><span>Revisado: 22 de junio de 2026</span><span>dividendos · IRPF · base del ahorro · fiscalidad inversión</span></div>
+  </section>
+
+  <article class="article">
+<p>Cobras tu primer dividendo y llega la duda: ¿cuánto se queda Hacienda? La respuesta corta es que los dividendos tributan en el IRPF como rendimientos del capital mobiliario, dentro de la llamada <strong>base del ahorro</strong>, y que para la inmensa mayoría de inversores el tipo va del 19 % al 21 %.</p>
+<p>Esta guía te explica los tramos actuales, por qué te retienen un 19 % al cobrarlos, qué pasa con los dividendos de empresas extranjeras y un par de mitos que todavía circulan.</p>
+<h2 id="la-respuesta-corta">La respuesta corta</h2>
+<p>Los dividendos se suman a tu <strong>base del ahorro</strong> y tributan por tramos: <strong>19 % hasta 6.000 €</strong>, <strong>21 % de 6.000 a 50.000 €</strong> y más a partir de ahí. Al pagártelos, tu bróker o tu banco retiene un <strong>19 %</strong> a cuenta; el ajuste final se hace en la declaración de la renta. <strong>No hay mínimo exento</strong>: tributan desde el primer euro.</p>
+<h2 id="qué-entra-en-la-base-del-ahorro">Qué entra en la &quot;base del ahorro&quot;</h2>
+<p>La base del ahorro agrupa las rentas que genera tu dinero: dividendos, intereses de cuentas y depósitos, cupones de bonos y las ganancias por vender acciones, ETF, fondos o criptomonedas. Es distinta de la base general (la de tu sueldo) y tiene su propia escala de tipos.</p>
+<p>Un detalle que mucha gente desconoce: <strong>la escala del ahorro es estatal</strong>, no la fijan las comunidades autónomas. Pagas lo mismo por tus dividendos en Madrid, Cataluña, Andalucía o cualquier otra región — a diferencia de tu nómina, donde el tramo sí cambia según dónde vivas.</p>
+<h2 id="los-tramos-en-2026">Los tramos en 2026</h2>
+<table>
+<thead>
+<tr>
+<th>Base del ahorro</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hasta 6.000 €</td>
+<td>19 %</td>
+</tr>
+<tr>
+<td>De 6.000 € a 50.000 €</td>
+<td>21 %</td>
+</tr>
+<tr>
+<td>De 50.000 € a 200.000 €</td>
+<td>23 %</td>
+</tr>
+<tr>
+<td>De 200.000 € a 300.000 €</td>
+<td>27 %</td>
+</tr>
+<tr>
+<td>Más de 300.000 €</td>
+<td>30 %</td>
+</tr>
+</tbody></table>
+<p>Es una escala <strong>progresiva por tramos</strong>: si ganas 10.000 € en dividendos, no pagas el 21 % de todo, sino el 19 % de los primeros 6.000 € y el 21 % de los 4.000 € siguientes. La gran mayoría de inversores particulares se mueven en el <strong>19 %–21 %</strong>; el tramo del 30 % (que subió desde el 28 % en 2025) solo afecta a rentas del ahorro por encima de 300.000 € al año.</p>
+<h2 id="la-retención-del-19--no-es-lo-que-pagas">La retención del 19 % no es lo que pagas</h2>
+<p>Cuando te ingresan un dividendo, ya te llega con un <strong>19 % retenido</strong> a cuenta de Hacienda. Eso <strong>no es el impuesto final</strong>: es un adelanto. En tu declaración se calcula lo que te toca según los tramos de arriba y se ajusta:</p>
+<ul>
+<li>Si tu tipo efectivo es el 19 %, la retención cubre justo lo que debes.</li>
+<li>Si parte de tus dividendos cae en el 21 % o más, pagarás la diferencia.</li>
+<li>Si por tu situación te retuvieron de más, te lo devuelven.</li>
+</ul>
+<h2 id="dividendos-de-empresas-extranjeras-la-doble-imposición">Dividendos de empresas extranjeras: la doble imposición</h2>
+<p>Aquí está el matiz que más despista. Si cobras dividendos de una empresa de fuera (por ejemplo, una acción estadounidense), <strong>el país de origen también retiene</strong> una parte antes de que el dinero llegue a España. En EE. UU., presentando el formulario <strong>W-8BEN</strong> a través de tu bróker, esa retención en origen es del <strong>15 %</strong> (sin él, sube al 30 %).</p>
+<p>Después, en España vuelves a tributar ese dividendo en tu base del ahorro. Para que no pagues dos veces por lo mismo existe la <strong>deducción por doble imposición internacional</strong>: puedes restar lo retenido en el extranjero, con el límite que marque el convenio (en el caso de EE. UU., ese 15 %). Conviene comprobar que tu bróker aplique bien la retención reducida y reflejar la deducción en la declaración.</p>
+<h2 id="mitos-que-conviene-desterrar">Mitos que conviene desterrar</h2>
+<ul>
+<li><strong>&quot;Los primeros 1.500 € de dividendos están exentos.&quot;</strong> Lo estuvieron, pero esa exención <strong>se eliminó en 2015</strong>. Hoy tributan desde el primer euro.</li>
+<li><strong>&quot;Si reinvierto el dividendo, no tributo.&quot;</strong> Tributas igual: el dividendo es una renta en el momento en que te lo pagan, lo reinviertas o no.</li>
+</ul>
+<h2 id="qué-significa-para-tu-estrategia-fire">Qué significa para tu estrategia FIRE</h2>
+<p>Si estás en fase de acumulación, cada dividendo que cobras y reinviertes pasa antes por Hacienda — un pequeño peaje anual que frena el interés compuesto. Por eso muchos inversores a largo plazo prefieren <strong>fondos o ETF de acumulación</strong>, que reinvierten los dividendos dentro del propio producto sin pasar por tu declaración hasta que vendes. No es que los dividendos sean malos: es que, mientras acumulas, diferir el impuesto deja más dinero trabajando para ti.</p>
+<p>Cuando llegues a la fase de vivir de las rentas, la conversación cambia. Para ver el efecto del tiempo y la reinversión, prueba la <a href="/interes-compuesto/">calculadora de interés compuesto</a>; y para saber cuánto patrimonio necesitas, la <a href="/regla-del-4-por-ciento/">regla del 4 %</a>.</p>
+<h2 id="fuentes">Fuentes</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sede.agenciatributaria.gob.es/static_files/Sede/Programas_ayuda/Retenciones/2026/CUADRO_TIPOS_RETENCION_IRPF_2026.pdf">Agencia Tributaria — Cuadro de tipos de retención del IRPF 2026 (PDF oficial)</a></li>
+<li><a target="_blank" rel="noopener" href="https://sede.agenciatributaria.gob.es/">Agencia Tributaria — Sede electrónica (Manual de Renta · rendimientos del capital mobiliario)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.boe.es/">BOE — Ley 7/2024 (modificación de la escala de la base del ahorro)</a></li>
+</ul>
+
+  </article>
+
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details class="q"><summary>¿Cuánto me retienen al cobrar un dividendo en España?<span class="plus">+</span></summary><div class="qa"><p>Un 19 % a cuenta del IRPF. No es el impuesto definitivo: es un adelanto que se ajusta en tu declaración de la renta según los tramos de la base del ahorro.</p></div></details>
+    <details class="q"><summary>¿Los dividendos tributan igual en toda España?<span class="plus">+</span></summary><div class="qa"><p>Sí. La escala de la base del ahorro es estatal y no la modifican las comunidades autónomas, así que pagas lo mismo por tus dividendos vivas donde vivas. Lo que sí cambia por comunidad es la tributación de tu sueldo (base general), no la de tus inversiones.</p></div></details>
+    <details class="q"><summary>¿Pago dos veces por los dividendos de acciones de EE. UU.?<span class="plus">+</span></summary><div class="qa"><p>No deberías. El país de origen retiene en la fuente (15 % en EE. UU. con el W-8BEN) y en España aplicas la deducción por doble imposición internacional para no tributar dos veces por la misma renta, dentro del límite del convenio.</p></div></details>
+    <details class="q"><summary>¿Es mejor acumulación o distribución para no pagar por los dividendos?<span class="plus">+</span></summary><div class="qa"><p>En fase de acumulación, los fondos y ETF de acumulación difieren el impuesto: reinvierten los dividendos sin que tributes hasta que vendes. Si vives de las rentas, los de distribución te dan flujo de caja periódico. Depende de tu fase, no hay uno &quot;mejor&quot; en abstracto.</p></div></details>
+    <details class="q"><summary>¿Tengo que declarar dividendos pequeños?<span class="plus">+</span></summary><div class="qa"><p>Sí. No existe un mínimo exento para los dividendos: tributan desde el primer euro y se incluyen en tu declaración de la renta.</p></div></details>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">Esto es solo una foto fija</div>
+    <h2>¿Y si vieras la película entera?</h2>
+    <p>Mi Plan FIRE coge estos números y los convierte en un plan vivo: 400 simulaciones Monte Carlo, tu pensión pública española, seguimiento mes a mes y comparativa en pareja. Gratis y sin cuenta — tus datos nunca salen de tu dispositivo.</p>
+    <a class="btn" href="https://app.miplanfire.com/?utm_source=guia&utm_medium=funnel&guia=como-tributan-los-dividendos-en-espana">Abrir Mi Plan FIRE →</a>
+    <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
+  </section>
+
+  <section class="related">
+    <h2>Sigue por aquí</h2>
+    <div class="relgrid">
+      <a class="relcard" href="https://calculadoras.miplanfire.com/interes-compuesto/">
+      <div class="rc-eye">Calculadora</div>
+      <div class="rc-t">Interés compuesto</div>
+    </a>
+      <a class="relcard" href="https://calculadoras.miplanfire.com/regla-del-4-por-ciento/">
+      <div class="rc-eye">Calculadora</div>
+      <div class="rc-t">Regla del 4 %</div>
+    </a>
+      <a class="relcard" href="https://calculadoras.miplanfire.com/guias/que-pasa-si-quiebra-mi-broker/">
+      <div class="rc-eye">Guía · Brókers y seguridad</div>
+      <div class="rc-t">¿Qué pasa si quiebra mi bróker? FOGAIN y la seguridad de tu dinero en España</div>
+    </a>
+    </div>
+  </section>
+
+  <div class="disc-box"><p>Herramienta educativa. No constituye asesoramiento financiero, fiscal ni de inversión. Las proyecciones son estimaciones basadas en supuestos: el comportamiento real puede diferir. Rentabilidades pasadas no garantizan rentabilidades futuras.</p></div>
+</main>
+
+<footer><div class="wrap">
+  <p class="disc">Herramienta educativa. No constituye asesoramiento financiero, fiscal ni de inversión. Las proyecciones son estimaciones basadas en supuestos: el comportamiento real puede diferir. Rentabilidades pasadas no garantizan rentabilidades futuras.</p>
+  <div class="fnav">
+    <a href="https://calculadoras.miplanfire.com/">Calculadoras</a>
+    <a href="https://calculadoras.miplanfire.com/guias/">Guías</a>
+    <a href="https://calculadoras.miplanfire.com/metodologia/">Metodología</a>
+    <a href="https://calculadoras.miplanfire.com/privacidad/">Privacidad</a>
+    <a href="https://app.miplanfire.com">Abrir la app</a>
+  </div>
+</div></footer>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
