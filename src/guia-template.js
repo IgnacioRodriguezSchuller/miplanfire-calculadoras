@@ -54,6 +54,8 @@ function footer(site) {
   <div class="fnav">
     <a href="${site.baseUrl}/">Calculadoras</a>
     <a href="${site.baseUrl}/guias/">Guías</a>
+    <a href="${site.baseUrl}/metodologia/">Metodología</a>
+    <a href="${site.baseUrl}/privacidad/">Privacidad</a>
     <a href="${site.appUrl}">Abrir la app</a>
   </div>
 </div></footer>
@@ -293,4 +295,42 @@ ${footer(site)}
 </html>`;
 }
 
-module.exports = { renderGuiaPage, renderGuiasIndexPage };
+// Página informativa simple (metodología, privacidad…): prosa con la MISMA piel que las guías.
+function renderInfoPage(page, site) {
+  const canonical = `${site.baseUrl}/${page.slug}/`;
+  return `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(page.title)}</title>
+<meta name="description" content="${esc(page.description)}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(page.title)}">
+<meta property="og:description" content="${esc(page.description)}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:locale" content="es_ES">
+${fonts()}
+<style>${CSS}${GUIA_CSS}</style>
+</head>
+<body>
+${bar(site, '')}
+
+<main class="wrap guia-wrap">
+  <div class="crumb"><a href="${site.baseUrl}/">Inicio</a> · <b>${esc(page.h1)}</b></div>
+  <section class="hero">
+    <h1>${esc(page.h1)}</h1>
+  </section>
+  <article class="article">
+${page.bodyHtml}
+  </article>
+</main>
+
+${footer(site)}
+</body>
+</html>`;
+}
+
+module.exports = { renderGuiaPage, renderGuiasIndexPage, renderInfoPage };
