@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de pensiones vs fondo indexado: cuál te conviene (fiscalidad real)</title>
+<meta name="description" content="El plan de pensiones deduce hasta 1.500 € al año, pero su rescate tributa como un sueldo. El fondo indexado no deduce, pero es flexible y tributa en la base del ahorro. Comparativa fiscal con enfoque FIRE.">
+<meta name="keywords" content="plan de pensiones, fondo indexado, IRPF, fiscalidad, jubilación">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://calculadoras.miplanfire.com/guias/plan-de-pensiones-vs-fondo-indexado/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Plan de pensiones vs fondo indexado: cuál te conviene (fiscalidad real)">
+<meta property="og:description" content="El plan de pensiones deduce hasta 1.500 € al año, pero su rescate tributa como un sueldo. El fondo indexado no deduce, pero es flexible y tributa en la base del ahorro. Comparativa fiscal con enfoque FIRE.">
+<meta property="og:url" content="https://calculadoras.miplanfire.com/guias/plan-de-pensiones-vs-fondo-indexado/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Mi Plan FIRE">
+<meta property="article:modified_time" content="2026-06-22">
+<meta property="article:published_time" content="2026-06-22">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1EBDE;--paper2:#FAF6EE;--ink:#221C14;--inksoft:#574E42;--muted:#8D8173;
+--line:#DCD2C2;--terra:#BC5635;--terradeep:#94401F;--olive:#5E6B43;--amber:#BE8629;--rad:14px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;
+font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.mono{font-family:"DM Mono",ui-monospace,monospace;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+h1,h2,h3{font-weight:500;line-height:1.1;margin:0;}
+a{color:var(--terradeep);text-decoration:none;}
+.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+/* header */
+header.bar{border-bottom:1px solid var(--line);background:rgba(241,235,222,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;}
+.bar-in{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;max-width:1000px;margin:0 auto;}
+.wordmark{font-size:20px;font-weight:500;letter-spacing:-.01em;}
+.wordmark span{color:var(--terra);}
+.wordmark small{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:8px;}
+.bar a.app{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:7px 13px;}
+.bar a.app:hover{background:var(--ink);color:var(--paper);}
+/* breadcrumb */
+.crumb{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);padding:18px 0 0;letter-spacing:.03em;}
+.crumb a{color:var(--muted);} .crumb b{color:var(--inksoft);font-weight:400;}
+/* hero */
+.hero{padding:14px 0 8px;}
+.hero h1{font-size:clamp(28px,5.4vw,46px);letter-spacing:-.015em;margin:10px 0 12px;}
+.hero .intro{font-size:clamp(16px,2.3vw,20px);color:var(--inksoft);max-width:680px;line-height:1.45;}
+/* calculator card */
+.calc{background:var(--paper2);border:1px solid var(--line);border-radius:var(--rad);margin:26px 0;overflow:hidden;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:740px){.calc-grid{grid-template-columns:1fr;}}
+.inputs{padding:24px 24px;border-right:1px solid var(--line);}
+@media(max-width:740px){.inputs{border-right:none;border-bottom:1px solid var(--line);}}
+.inputs h2,.results h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.field{margin-bottom:18px;}
+.field-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.field label{font-size:15.5px;color:var(--ink);font-weight:500;}
+.field .unit{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);white-space:nowrap;}
+.field-controls{display:flex;align-items:center;gap:12px;margin-top:8px;}
+input[type=number]{font-family:"DM Mono",monospace;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:108px;text-align:right;}
+input[type=number]:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 2px #BC563533;}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:99px;background:#E0D6C4;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);box-shadow:0 1px 4px #0002;}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--terra);cursor:pointer;border:3px solid var(--paper2);}
+.help{font-size:12.5px;color:var(--muted);margin:7px 0 0;line-height:1.45;}
+/* results */
+.results{padding:24px 24px;display:flex;flex-direction:column;gap:14px;}
+.result{border-bottom:1px dashed var(--line);padding-bottom:13px;}
+.result:last-child{border-bottom:none;padding-bottom:0;}
+.rlabel{font-size:13.5px;color:var(--inksoft);}
+.rvalue{font-size:26px;font-weight:500;letter-spacing:-.01em;margin-top:2px;}
+.rsub{font-size:12px;color:var(--muted);margin-top:1px;}
+.result.big .rvalue{font-size:clamp(38px,7vw,52px);color:var(--terra);line-height:1;}
+.result.big .rlabel{font-size:14px;}
+/* cta funnel */
+.cta{background:var(--ink);color:#ECE3D4;border-radius:var(--rad);padding:26px 26px;margin:26px 0;}
+.cta .eyebrow{color:#9A8F7C;}
+.cta h2{font-size:clamp(22px,3.4vw,30px);color:#fff;margin:8px 0 10px;letter-spacing:-.01em;}
+.cta p{color:#D8CFBE;font-size:16px;line-height:1.5;max-width:620px;margin:0 0 18px;}
+.cta a.btn{display:inline-block;background:var(--terra);color:#fff;font-weight:500;font-size:16px;padding:13px 22px;border-radius:10px;}
+.cta a.btn:hover{background:#cf6442;}
+.cta .note{font-family:"DM Mono",monospace;font-size:11px;color:#9A8F7C;margin-top:12px;letter-spacing:.03em;}
+/* prose */
+.prose{margin:30px 0;}
+.prose h2{font-size:clamp(21px,3vw,28px);margin:26px 0 8px;letter-spacing:-.01em;}
+.prose p{color:var(--inksoft);font-size:16.5px;line-height:1.6;margin:0 0 10px;max-width:720px;}
+/* faq */
+.faq{margin:30px 0;}
+.faq h2{font-size:clamp(21px,3vw,28px);margin-bottom:14px;}
+details.q{border:1px solid var(--line);border-radius:12px;background:var(--paper2);margin-bottom:10px;overflow:hidden;}
+details.q>summary{list-style:none;cursor:pointer;padding:15px 18px;font-size:17px;font-weight:500;display:flex;justify-content:space-between;gap:12px;}
+details.q>summary::-webkit-details-marker{display:none;}
+details.q .qa{padding:0 18px 16px;color:var(--inksoft);font-size:15.5px;line-height:1.55;max-width:700px;}
+details.q .plus{color:var(--terra);font-family:"DM Mono",monospace;transition:transform .2s;}
+details.q[open] .plus{transform:rotate(45deg);}
+/* related + footer */
+.related{margin:34px 0;}
+.related h2{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.relgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:740px){.relgrid{grid-template-columns:1fr;}}
+.relcard{display:block;border:1px solid var(--line);border-radius:12px;background:var(--paper2);padding:15px 16px;}
+.relcard:hover{border-color:var(--terra);}
+.relcard .rc-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.relcard .rc-t{font-size:16px;font-weight:500;margin-top:4px;color:var(--ink);}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:28px 0 50px;}
+footer .disc{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);line-height:1.6;max-width:760px;}
+footer .fnav{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 16px;}
+footer .fnav a{font-size:13px;color:var(--inksoft);}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+.guia-wrap{max-width:760px;}
+.article{margin:8px 0 0;}
+.article h2{font-size:clamp(22px,3.4vw,31px);letter-spacing:-.01em;margin:36px 0 12px;color:var(--ink);}
+.article h3{font-size:clamp(18px,2.6vw,22px);margin:28px 0 8px;color:var(--ink);}
+.article p{color:var(--inksoft);font-size:17.5px;line-height:1.68;margin:0 0 17px;}
+.article ul,.article ol{color:var(--inksoft);font-size:17.5px;line-height:1.66;margin:0 0 17px;padding-left:24px;}
+.article li{margin:7px 0;}
+.article li::marker{color:var(--terra);}
+.article a{color:var(--terradeep);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;}
+.article a:hover{color:var(--terra);}
+.article strong{color:var(--ink);font-weight:600;}
+.article blockquote{border-left:3px solid var(--terra);margin:20px 0;padding:6px 0 6px 18px;color:var(--inksoft);font-style:italic;}
+.article blockquote p{margin:0;}
+.article code{font-family:"DM Mono",monospace;font-size:.9em;background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;}
+.article pre{background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;margin:0 0 17px;}
+.article pre code{border:none;background:none;padding:0;}
+.article hr{border:none;border-top:1px solid var(--line);margin:30px 0;}
+.article table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15.5px;}
+.article th,.article td{border:1px solid var(--line);padding:9px 12px;text-align:left;color:var(--inksoft);vertical-align:top;}
+.article th{background:var(--paper2);color:var(--ink);font-weight:500;}
+.article h2 a,.article h3 a{color:inherit;text-decoration:none;}
+@media(max-width:560px){.article table{display:block;overflow-x:auto;font-size:14px;}}
+.guia-meta{font-family:"DM Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.02em;margin:14px 0 0;display:flex;gap:14px;flex-wrap:wrap;}
+.guia-tags{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px;}
+.guia-tags span{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 11px;}
+.disc-box{border:1px solid var(--line);background:var(--paper2);border-radius:12px;padding:15px 18px;margin:30px 0 0;}
+.disc-box p{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--muted);line-height:1.65;margin:0;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Plan de pensiones vs fondo indexado: cuál te conviene (fiscalidad real)","description":"El plan de pensiones deduce hasta 1.500 € al año, pero su rescate tributa como un sueldo. El fondo indexado no deduce, pero es flexible y tributa en la base del ahorro. Comparativa fiscal con enfoque FIRE.","inLanguage":"es-ES","url":"https://calculadoras.miplanfire.com/guias/plan-de-pensiones-vs-fondo-indexado/","mainEntityOfPage":"https://calculadoras.miplanfire.com/guias/plan-de-pensiones-vs-fondo-indexado/","author":{"@type":"Organization","name":"Mi Plan FIRE","url":"https://calculadoras.miplanfire.com"},"publisher":{"@type":"Organization","name":"Mi Plan FIRE","url":"https://calculadoras.miplanfire.com"},"datePublished":"2026-06-22","dateModified":"2026-06-22","citation":[{"@type":"CreativeWork","name":"Agencia Tributaria — Límites de reducción por aportaciones a sistemas de previsión social","url":"https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c13-determinacion-renta-contribuyente-sujeta-gravamen/reducciones-base-imponible-general/reducciones-aportaciones-contribuciones-sistemas-prevision-social/normas-comunes-aplicables-aportaciones-sistemas-social/limites-exceso-aportaciones.html"},{"@type":"CreativeWork","name":"Agencia Tributaria — Sede electrónica (Manual de Renta)","url":"https://sede.agenciatributaria.gob.es/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Guías","item":"https://calculadoras.miplanfire.com/guias/"},{"@type":"ListItem","position":2,"name":"Plan de pensiones vs fondo indexado: cuál te conviene (fiscalidad real)","item":"https://calculadoras.miplanfire.com/guias/plan-de-pensiones-vs-fondo-indexado/"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto puedo aportar a un plan de pensiones y desgravar en 2026?","acceptedAnswer":{"@type":"Answer","text":"Hasta 1.500 € al año en un plan individual (o el 30 % de tus rendimientos netos del trabajo, lo que sea menor). Los planes de empleo de tu empresa pueden sumar hasta 8.500 € más."}},{"@type":"Question","name":"¿Cómo tributa el dinero cuando rescato el plan?","acceptedAnswer":{"@type":"Answer","text":"Como rendimientos del trabajo, es decir, se suma a tu base general de ese año como si fuera un sueldo. Por eso conviene planificar cómo y cuándo rescatarlo para no dispararte de tramo."}},{"@type":"Question","name":"¿El fondo indexado desgrava?","acceptedAnswer":{"@type":"Answer","text":"No. No reduce tu IRPF al aportar. A cambio, solo tributas (en la base del ahorro, 19–21 % para la mayoría) sobre la ganancia cuando vendes, y puedes traspasar entre fondos sin tributar."}},{"@type":"Question","name":"Entonces, ¿qué es mejor para la jubilación anticipada?","acceptedAnswer":{"@type":"Answer","text":"Depende de tu tipo marginal. El fondo da flexibilidad total (clave si quieres vivir de él antes de los 65). El plan brilla si te ahorras un marginal alto hoy y lo rescatas en años de ingresos bajos. No son excluyentes: combinarlos es habitual."}},{"@type":"Question","name":"¿Puedo sacar el plan de pensiones cuando quiera?","acceptedAnswer":{"@type":"Answer","text":"Desde 2025, sí para las aportaciones con más de 10 años de antigüedad (en 2026, las de 2016 o anteriores), además de los supuestos clásicos (jubilación, desempleo de larga duración, enfermedad grave…)."}}]}</script>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <a href="https://calculadoras.miplanfire.com/" class="wordmark">Mi Plan <span>FIRE</span><small>Guías</small></a>
+  <a href="https://app.miplanfire.com" class="app">Abrir la app →</a>
+</div></header>
+
+<main class="wrap guia-wrap">
+  <div class="crumb"><a href="https://calculadoras.miplanfire.com/">Inicio</a> · <a href="https://calculadoras.miplanfire.com/guias/">Guías</a> · <b>Fiscalidad</b></div>
+
+  <section class="hero">
+    <div class="eyebrow">Guía · Fiscalidad</div>
+    <h1>Plan de pensiones vs fondo indexado: cuál te conviene (fiscalidad real)</h1>
+    <p class="intro">El plan de pensiones deduce hasta 1.500 € al año, pero su rescate tributa como un sueldo. El fondo indexado no deduce, pero es flexible y tributa en la base del ahorro. Comparativa fiscal con enfoque FIRE.</p>
+    <div class="guia-meta"><span>Revisado: 22 de junio de 2026</span><span>plan de pensiones · fondo indexado · IRPF · fiscalidad</span></div>
+  </section>
+
+  <article class="article">
+<p>Es una de las dudas que más se repite entre quienes empiezan a invertir para su futuro en España: <em>&quot;¿Meto el dinero en un plan de pensiones, que desgrava, o en un fondo indexado, que es más flexible?&quot;</em>. La respuesta honesta es <strong>depende de tu caso</strong> — y casi todo gira en torno a un detalle fiscal que mucha gente pasa por alto.</p>
+<h2 id="la-respuesta-corta">La respuesta corta</h2>
+<p>El <strong>plan de pensiones</strong> te deja restar lo aportado (hasta 1.500 €/año) de tu base imponible, así que <strong>te ahorra impuestos hoy</strong>. La trampa: cuando lo rescatas, ese dinero <strong>tributa como un sueldo</strong> (rendimientos del trabajo), no como el ahorro. El <strong>fondo indexado</strong> no desgrava, pero es <strong>flexible</strong>, puedes traspasarlo sin tributar y solo pagas (en la base del ahorro) cuando vendes con ganancia.</p>
+<p>En una frase: el plan <strong>difiere</strong> impuestos a la jubilación; el fondo te da <strong>libertad</strong>. Cuál gana depende de tu tipo marginal ahora frente al de cuando lo saques.</p>
+<h2 id="cómo-funciona-el-plan-de-pensiones">Cómo funciona el plan de pensiones</h2>
+<ul>
+<li><strong>Deducción hoy:</strong> aportas y reduces tu base imponible general hasta un máximo de <strong>1.500 € al año</strong> (o el 30 % de tus rendimientos netos del trabajo, lo que sea menor). Los <strong>planes de empleo</strong> de tu empresa pueden ampliar ese límite hasta 8.500 € adicionales.</li>
+<li><strong>El ahorro fiscal depende de tu tramo:</strong> como reduce la base general, te ahorras tu <strong>tipo marginal</strong>. Si tu marginal es el 37 %, aportar 1.500 € te devuelve ~555 € vía IRPF.</li>
+<li><strong>El rescate tributa como trabajo:</strong> al sacarlo, se suma a tu base general de ese año como si fuera salario. Aquí está el quid: solo sales ganando si tu tipo al rescatar es <strong>más bajo</strong> que el que te ahorraste al aportar.</li>
+<li><strong>Liquidez:</strong> históricamente solo podías rescatarlo en jubilación o supuestos concretos (paro, enfermedad…). Desde 2025 puedes rescatar las aportaciones con <strong>más de 10 años de antigüedad</strong> sin justificar nada (en 2026, las de 2016 o anteriores).</li>
+</ul>
+<h2 id="cómo-funciona-el-fondo-indexado">Cómo funciona el fondo indexado</h2>
+<ul>
+<li><strong>No desgrava</strong> la aportación: el dinero que metes no reduce tu IRPF.</li>
+<li><strong>Tributa solo al vender</strong>, en la <strong>base del ahorro</strong> (19 %–21 % para la mayoría), y únicamente sobre la ganancia.</li>
+<li><strong>Traspasos sin peaje fiscal:</strong> puedes mover el dinero de un fondo indexado a otro sin tributar hasta que rescatas. Eso te deja rebalancear o cambiar de gestora sin coste fiscal.</li>
+<li><strong>Liquidez total:</strong> lo vendes cuando quieras.</li>
+</ul>
+<h2 id="la-comparativa-de-un-vistazo">La comparativa, de un vistazo</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Plan de pensiones</th>
+<th>Fondo indexado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>¿Desgrava al aportar?</td>
+<td>Sí (hasta 1.500 €/año)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>¿Cómo tributa al sacarlo?</td>
+<td>Como sueldo (base general)</td>
+<td>Solo la ganancia, base del ahorro (19–21 %)</td>
+</tr>
+<tr>
+<td>Traspasos sin tributar</td>
+<td>Entre planes, sí</td>
+<td>Entre fondos, sí</td>
+</tr>
+<tr>
+<td>Liquidez</td>
+<td>A partir de 10 años / jubilación</td>
+<td>Total, cuando quieras</td>
+</tr>
+<tr>
+<td>Límite de aportación</td>
+<td>1.500 €/año (+ empleo)</td>
+<td>Sin límite</td>
+</tr>
+</tbody></table>
+<h2 id="el-quid-tu-tipo-marginal-ahora-y-después">El quid: tu tipo marginal, ahora y después</h2>
+<p>El plan de pensiones no &quot;elimina&quot; el impuesto: lo <strong>aplaza</strong>. Te ahorras tu marginal de hoy y pagas tu marginal del día que lo saques. Por eso:</p>
+<ul>
+<li><strong>Tiene sentido</strong> si ahora ganas bien (marginal alto) y esperas rescatarlo en años de ingresos bajos (marginal bajo) — por ejemplo, repartiéndolo en varios años de jubilación anticipada.</li>
+<li><strong>Tiene menos sentido</strong> si tu marginal es bajo ahora (el ahorro fiscal es pequeño) o si vas a rescatar de golpe una cantidad grande (que dispara tu base general ese año).</li>
+</ul>
+<p>El fondo indexado evita ese juego: pagas un 19–21 % sobre la ganancia, y punto, con libertad para entrar y salir.</p>
+<h2 id="qué-significa-para-tu-plan-fire">Qué significa para tu plan FIRE</h2>
+<p>Si tu objetivo es la independencia financiera temprana, la <strong>flexibilidad</strong> del fondo indexado encaja bien: puedes vivir de él antes de la edad de jubilación, sin esperar a ningún rescate. Dicho esto, el plan de pensiones tiene un ángulo interesante para FIRE: si dejas de trabajar pronto, tendrás <strong>años de ingresos muy bajos</strong> en los que rescatar el plan a un tipo marginal pequeño — justo el escenario en el que más brilla el diferimiento.</p>
+<p>Muchos combinan ambos: el grueso en fondos indexados por flexibilidad, y una parte en el plan para aprovechar la deducción si su marginal actual es alto. Para ver cuánto necesitas acumular en total, prueba la <a href="/cuanto-necesito-para-ser-libre/">calculadora de cuánto necesitas para ser libre</a>.</p>
+<h2 id="matices-que-conviene-conocer">Matices que conviene conocer</h2>
+<ul>
+<li><strong>Rescate en forma de capital:</strong> la antigua reducción del 40 % al sacarlo todo de golpe solo aplica a las <strong>aportaciones anteriores a 2007</strong>. Para el resto, no existe.</li>
+<li><strong>No &quot;ahorras&quot; impuestos, los difieres:</strong> el atractivo real es la diferencia entre tu tipo de hoy y el de mañana, más el tiempo que ese dinero &quot;ahorrado&quot; pasa invertido.</li>
+</ul>
+<h2 id="fuentes">Fuentes</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c13-determinacion-renta-contribuyente-sujeta-gravamen/reducciones-base-imponible-general/reducciones-aportaciones-contribuciones-sistemas-prevision-social/normas-comunes-aplicables-aportaciones-sistemas-social/limites-exceso-aportaciones.html">Agencia Tributaria — Límites de reducción por aportaciones a sistemas de previsión social</a></li>
+<li><a target="_blank" rel="noopener" href="https://sede.agenciatributaria.gob.es/">Agencia Tributaria — Sede electrónica (Manual de Renta)</a></li>
+</ul>
+
+  </article>
+
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details class="q"><summary>¿Cuánto puedo aportar a un plan de pensiones y desgravar en 2026?<span class="plus">+</span></summary><div class="qa"><p>Hasta 1.500 € al año en un plan individual (o el 30 % de tus rendimientos netos del trabajo, lo que sea menor). Los planes de empleo de tu empresa pueden sumar hasta 8.500 € más.</p></div></details>
+    <details class="q"><summary>¿Cómo tributa el dinero cuando rescato el plan?<span class="plus">+</span></summary><div class="qa"><p>Como rendimientos del trabajo, es decir, se suma a tu base general de ese año como si fuera un sueldo. Por eso conviene planificar cómo y cuándo rescatarlo para no dispararte de tramo.</p></div></details>
+    <details class="q"><summary>¿El fondo indexado desgrava?<span class="plus">+</span></summary><div class="qa"><p>No. No reduce tu IRPF al aportar. A cambio, solo tributas (en la base del ahorro, 19–21 % para la mayoría) sobre la ganancia cuando vendes, y puedes traspasar entre fondos sin tributar.</p></div></details>
+    <details class="q"><summary>Entonces, ¿qué es mejor para la jubilación anticipada?<span class="plus">+</span></summary><div class="qa"><p>Depende de tu tipo marginal. El fondo da flexibilidad total (clave si quieres vivir de él antes de los 65). El plan brilla si te ahorras un marginal alto hoy y lo rescatas en años de ingresos bajos. No son excluyentes: combinarlos es habitual.</p></div></details>
+    <details class="q"><summary>¿Puedo sacar el plan de pensiones cuando quiera?<span class="plus">+</span></summary><div class="qa"><p>Desde 2025, sí para las aportaciones con más de 10 años de antigüedad (en 2026, las de 2016 o anteriores), además de los supuestos clásicos (jubilación, desempleo de larga duración, enfermedad grave…).</p></div></details>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">Esto es solo una foto fija</div>
+    <h2>¿Y si vieras la película entera?</h2>
+    <p>Mi Plan FIRE coge estos números y los convierte en un plan vivo: 400 simulaciones Monte Carlo, tu pensión pública española, seguimiento mes a mes y comparativa en pareja. Gratis y sin cuenta — tus datos nunca salen de tu dispositivo.</p>
+    <a class="btn" href="https://app.miplanfire.com/?utm_source=guia&utm_medium=funnel&guia=plan-de-pensiones-vs-fondo-indexado">Abrir Mi Plan FIRE →</a>
+    <div class="note">Sin registro · tus datos no salen de tu dispositivo</div>
+  </section>
+
+  <section class="related">
+    <h2>Sigue por aquí</h2>
+    <div class="relgrid">
+      <a class="relcard" href="https://calculadoras.miplanfire.com/cuanto-necesito-para-ser-libre/">
+      <div class="rc-eye">Calculadora</div>
+      <div class="rc-t">Tu meta y tu plazo</div>
+    </a>
+      <a class="relcard" href="https://calculadoras.miplanfire.com/interes-compuesto/">
+      <div class="rc-eye">Calculadora</div>
+      <div class="rc-t">Interés compuesto</div>
+    </a>
+      <a class="relcard" href="https://calculadoras.miplanfire.com/guias/como-tributan-los-dividendos-en-espana/">
+      <div class="rc-eye">Guía · Fiscalidad</div>
+      <div class="rc-t">Cómo tributan los dividendos en España: tramos, retención y doble imposición</div>
+    </a>
+    </div>
+  </section>
+
+  <div class="disc-box"><p>Herramienta educativa. No constituye asesoramiento financiero, fiscal ni de inversión. Las proyecciones son estimaciones basadas en supuestos: el comportamiento real puede diferir. Rentabilidades pasadas no garantizan rentabilidades futuras.</p></div>
+</main>
+
+<footer><div class="wrap">
+  <p class="disc">Herramienta educativa. No constituye asesoramiento financiero, fiscal ni de inversión. Las proyecciones son estimaciones basadas en supuestos: el comportamiento real puede diferir. Rentabilidades pasadas no garantizan rentabilidades futuras.</p>
+  <div class="fnav">
+    <a href="https://calculadoras.miplanfire.com/">Calculadoras</a>
+    <a href="https://calculadoras.miplanfire.com/guias/">Guías</a>
+    <a href="https://calculadoras.miplanfire.com/metodologia/">Metodología</a>
+    <a href="https://calculadoras.miplanfire.com/privacidad/">Privacidad</a>
+    <a href="https://app.miplanfire.com">Abrir la app</a>
+  </div>
+</div></footer>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
